@@ -1,0 +1,205 @@
+\chapter{Grundläggande kombinatorik}
+\label{ch:Kombinatorik}
+% XXX Skriv kapitlet om kombinatorik
+
+\begin{theorem}[Dirichlets lådprincip]\label{thm:ladprincipen}
+  % XXX Beskriv Dirichlets lådprincip
+  \dots
+\end{theorem}
+
+\begin{theorem}[Additionsprincipen]
+  % XXX Beskriv additions principen
+  \dots
+\end{theorem}
+
+\section{Om val}
+Vi stöter ofta på val av olika slag.
+Vi ska i detta avsnitt reflektera över antalet möjliga utfall som kan uppstå
+genom att olika val kombineras samman.
+
+Vi inleder med definitioner av de begrepp vi kommer att använda.
+
+\begin{definition}\label{def:Val}
+  Med \emph{val} menas att det finns \(n \geq 1\) antal distinkta alternativ
+  att välja mellan, av dessa alternativ måste ett och endast ett väljas.
+  Det alternativ som väljs sägs vara \emph{utfallet av valet}.
+\end{definition}
+
+Vi fortsätter med ett väldigt enkelt lemma om förhållandet mellan valets
+antal alternativ och det möjliga antalet utfall.
+
+\begin{lemma}\label{lem:AntalUtfall}
+  Ett val från \(n\) alternativ har \(n\) möjliga utfall.
+\end{lemma}
+\begin{proof}
+  För varje alternativ behövs åtminstone ett utfall.
+  Om vi har \(n\) alternativ och antar att vi har \(n+1\) utfall,
+  då måste det enligt Dirichlets lådprincip, \cref{thm:ladprincipen}, vara 
+  något alternativ som får fler än ett utfall.
+  Men om ett och samma alternativ har flera utfall, då måste dessa utfall
+  vara samma utfall.
+  Detta är en motsägelse och därför måste vi ha exakt \(n\) utfall.
+\end{proof}
+
+För fullständighet inkluderas även följande exempel.
+\begin{example}\label{ex:Fikabrod}
+  Du ska välja fikabröd till eftermiddagsfikat.
+  De alternativ du har att välja mellan är en nybakad bulle, en torr kaka och
+  att inte ta något fikabröd.
+  Notera att välja \emph{ingenting} utgör ett alternativ, det går alltså inte
+  att avstå från ett val.
+
+  Valet av fikabröd har tre alternativ, enligt \cref{lem:AntalUtfall}
+  finns således tre möjliga utfall.
+  Ett utfall är att vi väljer bullen, ett annat att vi väljer kakan och det
+  sista att vi väljer att inte ta något fikabröd.
+\end{example}
+
+\subsection{Att välja bland val}
+Då är det dags att utöka våra möjligheter att välja genom att kombinera flera
+val till ett sammansatt val.
+
+\begin{definition}
+  När ett val ska göras följt efter ett annat säger vi att vi har ett
+  \emph{sammansatt val}.
+  Ett sammansatt val kan ibland kallas för val.
+  Varje ingående val kallas för ett \emph{delval}.
+\end{definition}
+
+\begin{example}
+  Det är dags för eftermiddagsfika igen.
+  Du ska först välja om du ska dricka kaffe, te eller vatten.
+  (Att inte välja någonting är inte ett alternativ i detta val, detta är ett
+  rent teoretiskt val eftersom att rent praktiskt finns ju alltid
+  alternativet att inte fika alls.)
+  Därefter ska du välja fikabröd enligt \cref{ex:Fikabrod}.
+  Då har vi ett sammansatt val bestående av två delval, ett för dryck och ett
+  för fikabröd.
+\end{example}
+\begin{exercise}
+  Visa att detta stämmer överens med att välja mellan alternativen \emph{kaffe 
+  och bulle}, \emph{kaffe och kaka}, \emph{te och bulle}, och så vidare.
+\end{exercise}
+
+Det är nu intressant att veta hur många möjliga utfall som ett sådant val
+möjligen kan ha.
+Detta sammanfattas i följande sats.
+
+\begin{theorem}[Multiplikationsprincipen]\label{thm:Multiplikationsprincipen}
+  Ett sammansatt val av \(m\) antal delval, där delval \(i\) har \(n_i\)
+  antal alternativ,
+  har \(n_1\cdot n_2\cdots n_m\) antal möjliga utfall.
+\end{theorem}
+
+\begin{proof}
+  Låt oss börja med att titta på det sista valet, val \(m\).
+  Detta val har \(n_m\) alternativ och således \(n_m\) utfall enligt
+  \cref{lem:AntalUtfall}.
+  Vi går vidare till valet innan, det vill säga val \(m-1\).
+  Detta val har \(n_{m-1}\) möjliga utfall.
+  För varje utfall av detta val kan vi få \(n_m\) utfall i val \(m\).
+  Då har vi alltså tillsammans
+  \begin{equation}\label{eq:MultprincipTvaVal}
+    \sum_{k=1}^{n_{m-1}} n_m = \underbrace{n_m + n_m + \cdots
+    n_m}_{n_{m-1}} = n_{m-1}\cdot n_m.
+  \end{equation}
+  För varje utfall av delval \(m-2\) kan vi få antalet utfall från
+  \cref{eq:MultprincipTvaVal}.
+  Det vill säga
+  \begin{equation}
+    \sum_{k=1}^{n_{m-2}} n_{m-1}\cdot n_m = n_{m-2}\cdot n_{m-1} \cdot n_m.
+  \end{equation}
+  Vi fortsätter på detta vis till vi når det första valet då vi får
+  \begin{equation}
+    \sum_{k=1}^{n_1} n_2\cdot n_3\cdots n_{m-2}\cdot n_{m-1}\cdot n_m
+      = n_1\cdot n_2\cdots n_m,
+  \end{equation}
+  vilket visar satsen.
+\end{proof}
+
+Från \cref{thm:Multiplikationsprincipen} följer direkt ett enkelt resultat
+som vi ger i detta korollarium\footnote{%
+  Det vill säga en följdsats.
+}.
+
+\begin{corollary}\label{cor:SammansattValKonstAlternativ}
+  Ett sammansatt val av \(m\) antal delval där varje delval har \(n\)
+  alternativ, har \(n^m\) antal möjliga utfall.
+\end{corollary}
+
+\begin{proof}
+  Om vi har ett sammansatt val av \(m\) antal delval, där delval
+  \(i\) har \(n_i\) alternativ.
+  Då har vi enligt \cref{thm:Multiplikationsprincipen} att det totala
+  utfallet är \(n_1\cdot n_2\cdots n_m\).
+  Men eftersom att alla val hade samma antal alternativ, nämligen \(n\), då
+  får vi att \(n_1\cdot n_2\cdots n_m = n\cdot n\cdots n = n^m\).
+  Följaktligen får vi \(n^m\) antal möjliga utfall då vi har \(m\) delval där
+  varje delval har \(n\) alternativ.
+\end{proof}
+
+
+
+\section{Val av lösenord}
+Vi ska nu titta på hur detta kan användas för att undersöka säkerheten hos
+lösenord.
+Det finns flera angreppssätt för att skapa lösenord, exempelvis genom att
+välja en kombination av tecken (bokstäver, siffror och specialtecken) eller att
+helt enkelt välja några ord.
+Det går också att skapa lösenord genom att slumpmässigt välja några ord som
+kombineras till ett lösenord.
+
+Vi börjar med det första fallet, där vi skapar ett lösenord genom att kombinera
+tecken.
+Om vi ska skapa ett lösenord som är fem tecken långt och får innehålla
+bokstäverna A-Z, både gemener och versaler,
+siffrorna 0-9 samt
+specialtecknen ''!@.\%\&'',
+då kan vi se valet av lösenord som ett sammansatt val bestående av fem delval,
+där alternativen för varje delval är de tillåtna tecknen.
+Antalet alternativ är således \(26\cdot 2 + 10 + 5 = 67\).
+Eftersom att alla delval har samma antal alternativ kan vi använda
+\cref{cor:SammansattValKonstAlternativ} för att ta reda på antalet möjliga
+utfall, det vill säga antalet möjliga lösenord.
+Antalet lösenord som uppfyller detta krav är \(67^5 = 1350125107\).
+
+Nu fortsätter vi med att titta på fallet med att välja lösenord genom att
+slumpmässigt välja några ord.
+Vi bestämmer oss för att använda ett lösenord med fyra slumpmässigt valda
+ord från svenska språket.
+Enligt Svenska Akademin \citep{SAOL} innehåller Svenska Akademins Ordlista
+ungefär 125000 ord.
+Detta ger enligt \cref{cor:SammansattValKonstAlternativ}
+\begin{equation}\label{eq:AntalUtfallOrd}
+  125000^4 = (2^3\cdot 5^6)^4
+    = 2^{12}\cdot 5^{24}
+    = 2^{12}\cdot 25^{12},
+\end{equation}
+det vill säga \(244140625000000000000\), möjliga lösenord.
+
+Det senaste fallet kan också ses ur det första fallets perspektiv.
+Låt oss anta att medellängden av orden vi väljer från är fem tecken och att
+dessa tecken enbart är gemener.
+Det innebär att vi får
+\begin{equation}\label{eq:AntalUtfallTecken}
+  (29^5)^4 = 29^{20} = 176994576151109753197786640401
+\end{equation}
+möjliga lösenord.
+
+Hur spelar denna representation någon roll, vad betyder skillnaden mellan
+\cref{eq:AntalUtfallOrd} och \cref{eq:AntalUtfallTecken}?
+Det första som bör påpekas är att i \cref{eq:AntalUtfallTecken} tas även
+teckenkombinationer som ej är svenska ord med.
+Detta eftersom att valet var att välja fyra uppsättningar av fem tecken.
+Betydelsen av detta är att om vi låter en dator bara slumpa fram 20 bokstäver
+(gemener), då kommer det att resultera i antalet gissningar från
+\cref{eq:AntalUtfallTecken}.
+Det är inte ens säkert att datorn kommer att hitta rätt lösenord om vi råkade
+välja fyra långa ord som alla var minst sex bokstäver långa.
+Detta är ett problem med denna uppskattning.
+Om vi däremot har en ordlista som datorn väljer ord från för att kombinera
+dessa till ett lösenord om fyra ord för att gissa lösenordet, då kommer antalet
+gissningar att maximalt bli \cref{eq:AntalUtfallOrd}.
+Även denna metod kräver naturligtvis att orden i lösenordet finns med i
+ordlistan som datorn har tillgång till.
+

@@ -1,0 +1,226 @@
+% $Id$
+%
+% Copyright 2011, 2012, 2013, 2014; Daniel Bosk <daniel@bosk.se>
+%
+% This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 
+% Unported license.  To view a copy of this license, visit URL
+%
+%   http://creativecommons.org/licenses/by-sa/3.0/.
+%
+
+%\documentclass[a4paper,titlepage,reqno,final,twoside]{amsbook}
+\documentclass[a4paper,reqno,twoside,draft]{amsbook}
+\usepackage{amsbooka}
+\usepackage{fixltx2e}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[ibycus,german,english,swedish]{babel}
+\usepackage{xparse}
+\usepackage{graphicx}
+\usepackage[hyphens]{url}
+\usepackage{lettrine}
+\usepackage[strict]{csquotes}
+\usepackage{setspace}
+\usepackage{nomencl}
+\usepackage{marginnote}
+\usepackage{subfig}
+\usepackage{booktabs}
+\usepackage[multiple]{footmisc}
+\usepackage{verbatim}
+\usepackage{ifdraft}
+\usepackage{asymptote}
+\usepackage{datetime}
+
+\includeonly{intro,logik}
+
+\ifdraft{%
+  \usepackage{fancyhdr}
+  \usepackage{showlabels}
+}{%
+  \usepackage[a4paper,rmargin=6cm]{geometry}
+}
+
+\usepackage[natbib,style=alphabetic,maxbibnames=99]{biblatex}
+\addbibresource{matematik-1.bib}
+%\addbibresource{krypto/introcrypt.bib}
+%\addbibresource{pwdanalysis/literature.bib}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+\usepackage{amsthm}
+\newtheorem{theorem}{Sats}[chapter]
+\newtheorem{proposition}{Proposition}[chapter]
+\newtheorem{lemma}{Lemma}[chapter]
+\newtheorem{corollary}{Korollarium}[chapter]
+\newtheorem{conjecture}{Förmodan}[chapter]
+\theoremstyle{definition}
+\newtheorem{axiom}{Axiom}[chapter]
+\newtheorem{definition}{Definition}[chapter]
+\newtheorem{example}{Exempel}[chapter]
+\newtheorem{exercise}{Övning}[chapter]
+\theoremstyle{remark}
+\newtheorem{remark}{Anmärkning}[chapter]
+
+\numberwithin{section}{chapter}
+\numberwithin{equation}{chapter}
+\numberwithin{figure}{chapter}
+\numberwithin{table}{chapter}
+
+\usepackage{varioref}
+\renewcommand{\reftextbefore}{(föregående sida)}
+\renewcommand{\reftextfacebefore}{(föregående sida)}
+\renewcommand{\reftextafter}{(nästa sida)}
+\renewcommand{\reftextfaceafter}{(nästa sida)}
+\renewcommand{\reftextfaraway}[1]{(sidan~\pageref{#1})}
+\usepackage{hyperref}
+\usepackage[noabbrev,swedish]{cleveref}
+\crefname{conjecture}{förmodan}{förmodan}
+\crefname{axiom}{axiom}{axiom}
+\crefname{exercise}{övning}{övning}
+\Crefname{exercise}{Övning}{Övning}
+\crefname{corollary}{korollarium}{korollarium}
+%\crefname{proposition}{proposition}{proposition}
+
+\renewcommand{\qedsymbol}{Q.E.D.}
+\DeclareDocumentCommand{\N}{}{\ensuremath{\mathbb{N}}}
+\DeclareDocumentCommand{\Z}{}{\ensuremath{\mathbb{Z}}}
+\DeclareDocumentCommand{\Q}{}{\ensuremath{\mathbb{Q}}}
+\DeclareDocumentCommand{\R}{}{\ensuremath{\mathbb{R}}}
+\DeclareDocumentCommand{\powerset}{}{\ensuremath{\mathcal{P}}}
+\DeclareDocumentCommand{\U}{}{\ensuremath{\mathcal{U}}}
+\DeclareDocumentCommand{\V}{}{\ensuremath{\mathcal{V}}}
+\DeclareMathOperator{\card}{card}
+\DeclareMathOperator{\tnot}{icke}
+\DeclareMathOperator{\tor}{eller}
+\DeclareMathOperator{\tand}{och}
+\DeclareMathOperator{\lequiv}{\Longleftrightarrow}
+\DeclareMathOperator{\congruent}{\equiv}
+
+%%% krypto/*
+\DeclareMathOperator{\p}{\mathcal{P}}
+\let\P\p
+\DeclareMathOperator{\C}{\mathcal{C}}
+\DeclareMathOperator{\K}{\mathcal{K}}
+\DeclareMathOperator{\E}{\mathcal{E}}
+\DeclareMathOperator{\D}{\mathcal{D}}
+
+\let\stoch\relax
+\renewcommand{\p}{\stoch{P}}
+\renewcommand{\c}{\stoch{C}}
+\renewcommand{\k}{\stoch{K}}
+\newcommand{\x}{\stoch{X}}
+\newcommand{\y}{\stoch{Y}}
+\newcommand{\e}{\stoch{E}}
+\newcommand{\s}{\stoch{S}}
+
+\DeclareMathOperator{\xor}{\oplus}
+
+
+\makenomenclature{}
+\makeindex{}
+
+\begin{document}
+\ifdraft{%
+  \fancypagestyle{plain}{%
+    \renewcommand{\headrulewidth}{0pt}
+    \fancyhead{}
+    \fancyfoot[co,ce]{\thepage}
+    \fancyfoot[ro,le]{%
+      \tt Draft: \today~\currenttime{}
+    }
+  }
+  \fancypagestyle{ams}{%
+    \renewcommand{\headrulewidth}{0pt}
+    \fancyhead[ce]{\small\leftmark}
+    \fancyhead[co]{\small\rightmark}
+    \fancyhead[lo,re]{}
+    \fancyhead[ro,le]{\thepage}
+    \fancyfoot[ro,le]{%
+      \tt Draft: \today~\currenttime{}
+    }
+  }
+  \pagestyle{ams}
+}{}
+
+\title{%
+  Matematik för alla, volym I
+}
+\author{%
+  Daniel Bosk\footnote{%
+    Detta verk är licensierat under en Creative Commons Erkännande-DelaLika 4.0 
+    Internationell licens.
+    För att ta del av en kopia av licensen besök följande URL\@:
+    \url{http://creativecommons.org/licenses/by-sa/4.0/}.
+  }
+}
+
+\frontmatter
+\include{frontmatter}
+\include{preface}
+
+\mainmatter{}
+\ifdraft{%
+  \onehalfspacing{}
+}{}
+% main chapters
+\include{intro}
+\ifdraft{}{%
+  \part{Den matematiska grunden}
+}
+\include{logik}
+\include{mangder}
+\ifdraft{}{%
+  \part{Tal och aritmetik}
+}
+\include{naturliga}
+\include{heltalen}
+\include{talteori}
+\include{rationella}
+\include{reella}
+\include{talsystem}
+\ifdraft{}{%
+  \part{Ekvationer}
+}
+\include{ekvationer}
+\include{olikheter}
+\include{potensekvationer}
+\ifdraft{}{%
+  \part{Geometri}
+}
+\include{geometri}
+\include{trigonometri}
+\include{linjalg}
+\ifdraft{}{%
+  \part{Samband och förändring}
+}
+\include{procent}
+\include{forandring}
+\ifdraft{}{%
+  \part{Kombinatorik, sannolikhet och statistik}
+}
+\include{kombinatorik}
+%\include{pwdanalysis/pwdinclude}
+\include{sannolikhet}
+\include{statistik}
+%\include{krypto/krypto}
+
+% appendices
+\appendix
+\ifdraft{%
+  \doublespacing{}
+}{}
+\include{kursplanering}
+
+\backmatter{}
+\ifdraft{%
+  \singlespacing{}
+}{}
+\printbibliography{}
+\listoffigures
+\listoftables
+%\printnomenclature
+\printindex
+\include{backmatter}
+
+\clearpage
+\end{document}

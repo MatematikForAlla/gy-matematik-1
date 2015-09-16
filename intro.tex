@@ -1,0 +1,319 @@
+% $Id$
+%
+% Copyright 2011, 2012, 2013, 2014; Daniel Bosk <daniel@bosk.se>
+%
+% This work is licensed under the Creative Commons Attribution-ShareAlike 3.0 
+% Unported license.  To view a copy of this license, visit URL
+%
+%   http://creativecommons.org/licenses/by-sa/3.0/.
+%
+\chapter{Introduktion}\label{Introduktion}
+% XXX fysik, kemi använder matematiken
+\lettrine{M}{atematiken har funnits} i mer än 5000 år, men började utvecklas i 
+riktning mot dagens matematik först omkring 300 f.v.t.\ i antikens Grekland 
+\cite{Kline1990mtf1}.
+Innan dess var matematiken endast räkning, ett verktyg för att beräkna skatter 
+och konstruera byggnadsverk.
+
+Ordet matematik har enligt~\cite{OED2013maths} sitt ursprung i grekiskans 
+\emph{\ibygr{ma'qhma} (m{\'a}th{\=e}ma)}, vilket betyder \emph{lärande, 
+studier, vetenskap}.
+Det är i det antika Grekland som dagens matematik har sitt ursprung.
+De studerade främst geometri och gjorde detta genom att sätta upp några 
+grundläggande antaganden, kallade postulat eller axiom, som de var övertygade 
+om att de stämde överens med verkligheten.
+Dessa var enkla antaganden, såsom att två parallella linjer aldrig kommer att 
+skära varandra.
+Utifrån dessa enkla postulat härledde de olika geometriska resultat med hjälp 
+av logik och de kunde bevisa att det måste vara på ett visst sätt.
+Även om de kunde se genom några enkla experiment hur saker förhöll sig till 
+varandra nöjde de sig inte utan ett bevis utifrån postulaten eller tidigare 
+bevisade resultat.
+Anledningen till detta är enkel: för att övertyga sig om att någonting alltid 
+stämmer, då räcker det inte med att testa tre fall, det räcker inte med 
+hundratals fall, inte en tusentals --- dessa fall kanske avviker, eller att 
+inget av dem är det specialfall som avviker.
+
+Detta har inspirerat matematiker genom historien och är den drivkraft som 
+verkat för att matematiken utvecklats till det som den är idag.
+Dagens matematik bygger likt grekernas på några enkla grundantaganden som vi 
+kallar för axiom.
+Vidare måste begrepp som vi använder definieras tydligt för att vi exakt ska 
+veta vad som menas med dem.
+Detta var drivkraften bakom axiomatiseringen av de naturliga talen som vi 
+kommer att se i \cref{DeNaturligaTalen}, bakom grundläggningen av de hela 
+talen i \cref{ch:Heltalen}, de rationella talen i 
+\cref{ch:Rationella} och de reella talen i \cref{ch:Reella}.
+Länge hade matematikerna tagit talen som självklara, men vid 1800-talets mitt 
+behövde de veta tydligare vad ett tal var för att kunna gå vidare.
+Det som är intressant är att behovet av en axiomatisering uppstod historiskt i 
+omvänd ordning av hur de logiskt är uppbyggda och presenteras i denna text.
+För en detaljerad redogörelse över den historiska utvecklingen hänvisas till 
+\citet{Kline1990mtf3}.
+
+I en definition av ett objekt eller egenskap sätter vi upp regler för hur ett 
+objekt som är av denna typ eller har denna egenskap ska bete sig.
+Om vi kan visa att ett objekt uppfyller reglerna i definitionen, då måste
+objektet också vara av den typen eller ha den egenskapen.
+
+\begin{example}\label{ex:cykel}
+  Vi använder följande definition: en \emph{cykel} har åtminstone ett hjul och 
+  vevarmar med pedaler som används för att driva hjulen och ge cykeln fart.
+
+  Om vi tittar på fordonet i \cref{fig:cykel} ser vi att det har 
+  åtminstone ett hjul (det har två), det har vevaxlar med pedaler som används 
+  för att driva hjulen och således ge fordonet fart.
+  Alltså måste det enligt vår definition vara en cykel.
+\end{example}
+\begin{figure}
+  % XXX create figs/cykel.eps
+  \includegraphics[width=0.7\textwidth]{figs/cykel.eps}
+  \caption{En illustration av en cykel.}\label{fig:cykel}
+\end{figure}
+
+\begin{example}\label{ex:bil}
+  Vi använder samma definition som i \cref{ex:cykel}.
+  Om vi tittat på fordonet i figur \cref{fig:sparkcykel} ser vi att det 
+  har åtminstone ett hjul.
+  Det saknas dock vevarmar för att driva hjulen.
+  Vi kan således konstatera att en sparkcykel enligt definitionen i 
+  \cref{ex:cykel} inte är en cykel.
+\end{example}
+\begin{figure}
+  % XXX create figs/sparkcykel.eps
+  \includegraphics[width=0.7\textwidth]{figs/sparkcykel.eps}
+  \caption{En illustration av en sparkcykel.}\label{fig:sparkcykel}
+\end{figure}
+
+Med denna typ av definitioner kan vi veta exakt, vi kan bevisa att ett objekt 
+är av en specifik typ --- likt vi gjorde i exemplen ovan.
+Vi kan också göra det omvända, om ett objekt är av denna typen uppfyller det de
+givna reglerna.
+Exempelvis, om någon säger att de har en cykel, då måste den ha åtminstone ett 
+hjul och vevarmar med pedaler som driver den framåt.
+När vi bevisar saker kan vi alltså utgå från enbart dessa regler, det är detta 
+som är grunden inom matematiken.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% NOTATION
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Den missförstådda algebran}
+
+Innan vi går vidare till våra studier av matematiken ska vi ägna några rader åt 
+något som i onödan förrvirrat alltför många: algebra.
+Algebran har många gånger beskrivits som \enquote{att räkna med bokstäver}, 
+vilket är tämligen missvisande, vi ska i detta avsnitt förklara vad algebra 
+faktiskt är.
+
+I vårt dagliga tal har vi diverse språkliga konstruktioner för att veta vilka 
+objekt vi samtalar om, exempelvis \enquote{den svarta bilen närmast hitåt} 
+eller \enquote{korsningen närmast skolan}.
+Vi använder dessa beskrivningar utan större ansträngning.
+Ibland blir det dock fel, vi har säkert alla hamnat i en situation som krävt 
+uttrycket \enquote{jaha, du menar den, jag trodde att du menade något helt 
+annat}.
+Då måste vi förbättra noggrannheten i våra beskrivningar av objekten för att 
+bli förstådda utan vidare missförstånd.
+
+Vi kan också prata om klasser av objekt, exempelvis träd.
+De flesta har säkert stött på uttrycken \enquote{en björk har löv} eller 
+\enquote{björkar har löv}, \enquote{en tall har barr} eller \enquote{tallar har 
+barr}.
+Det är för de flesta självklart vad som menas med en björk, att det är ett träd 
+av släktet björk (\emph{betula}).
+Den specifika arten spelar ingen roll, exempelvis hängbjörk (\emph{betula 
+pendula}) och dvärgbjörk (\emph{betula nana}) är båda björkar.
+Uttryckssättet brukar användas i meningar som \enquote{en björk har vit-svart 
+stam} eller \enquote{björkar har vit-svarta stammar}.
+
+\begin{exercise}
+  Prata med någon om valfritt ämne, var uppmärksam på hur ni uttrycker er för 
+  att säkerställa att ni \enquote{pratar om samma sak}.
+\end{exercise}
+
+Matematiken är inte särskilt mycket konstigare än vanligt språk.
+Ett av matematikens främsta verktyg är just språket, utan det skulle vi inte 
+kunna uttrycka våra tankar på ett effektivt sätt.
+Ett annat ovärderligt verktyg är pennan med tillhörande papper.
+Detta hjälper oss dels att spara våra tankar, men framförallt att strukturera 
+dem.
+
+Säg nu att vi vill diskutera olika exotiska blommor som finns hos en 
+blomsterhandlare.
+Då vi själva inte är experter på exotiska blommor vet vi inte namnet på dem, så 
+vi kan inte använda namnen för att diskutera dem.
+Ibland kanske vi släktets namn, exempelvis orkidé (\emph{orchidaceae}), men det 
+finns så många olika orkidéer att detta inte alltid hjälper.
+Om alla blommor är av olika färg skulle vi kunna använda färgen för att 
+identifiera de olika blommorna, exempelvis \enquote{jag tycker bäst om den 
+gröna blomman}.
+Men, det är sällan detta är fallet, så det är inte en hållbar metod.
+En annan naturlig metod är att numrera dem, exempelvis \enquote{jag tycker bäst 
+om den första blomman vi tittade på}.
+Denna metod är mer hållbar.
+
+Nu vill vi göra samma sak med papper och penna, kanske för att göra en 
+inköpslista.
+Då det tar mycket längre tid att skriva något än att säga samma sak, vill vi 
+naturligtvis ha en kortare notation.
+Vi kanske bara skriver \enquote{1:a} eller bara \enquote{1}, istället för 
+\enquote{den första blomman} eller \enquote{blomma nummer ett}.
+Om vi nu vill ha flera av en sort, då finns det en risk att vi förvirrar oss om 
+vi skriver \enquote{2 3}.
+Betyder detta att vi vill ha två av den tredje blomman eller tre av den andra 
+blomman?
+En bättre lösning är därför att vi hittar på namn eller symboler till de olika 
+blommorna.
+Vi skulle kunna rita en liten bild av de blommor vi tycker bäst om och vill 
+köpa.
+Detta tar dock tid, och blir inte alltid särskilt bra.
+Vi kan därför använda symboler som vi redan har namn på, och som vi kan skriva 
+väldigt effektivt: vårt alfabet.
+Låt den första blomman vara \(a\), den andra \(b\), och så vidare.
+Då finns det ingen risk att vi blandar ihop antalet med sorten likt ovan, vi 
+kan skriva exempelvis \(2c\) och vet exakt vad vi menar.
+
+Detta är bakgrunden till den matematiska notationen med bokstäver.
+Det är således inget märkligt med den matematiska notationen som skrämt så 
+många, det är helt enkelt ett enkelt sätt att namnge saker på ett skrivvänligt 
+sätt.
+En nackdel är att det finns så få bokstäver.
+Därför brukar man ibland även ta till det grekiska alfabetet för att få fler 
+bokstäver.
+En sammanfattning av detta finns i \cref{tbl:greekalpha}.
+
+\begin{table}
+  \caption{Det grekiska alfabetet.}
+  \begin{tabular}{lll}
+    \textbf{Versal} & \textbf{Gemen} & \textbf{Uttal} \\
+    \toprule
+    \(A\) & \(\alpha\) & alfa \\
+    \(B\) & \(\beta\) & beta \\
+    \(\Gamma\) & \(\gamma\) & gamma \\
+    \(\Delta\) & \(\delta\) & delta \\
+    \(E\) & \(\epsilon\) & epsilon \\
+    \(Z\) & \(\zeta\) & zeta \\
+    \(H\) & \(\eta\) & eta \\
+    \(\Theta\) & \(\theta\) & theta \\
+    \(I\) & \(\iota\) & iota \\
+    \(K\) & \(\kappa\) & kappa \\
+    \(\Lambda\) & \(\lambda\) & lambda \\
+    \(M\) & \(\mu\) & my \\
+    \bottomrule
+  \end{tabular}
+  \hspace{1em}
+  \begin{tabular}{lll}
+    \textbf{Versal} & \textbf{Gemen} & \textbf{Uttal} \\
+    \toprule
+    \(N\) & \(\nu\) & ny \\
+    \(\Xi\) & \(\xi\) & xi \\
+    \(O\) & \(o\) & omikron \\
+    \(\Pi\) & \(\pi\) & pi \\
+    \(P\) & \(\rho\) & rho \\
+    \(\Sigma\) & \(\sigma\) & sigma \\
+    \(T\) & \(\tau\) & tau \\
+    \(Y\) & \(\upsilon\) & ypsilon \\
+    \(\Phi\) & \(\phi\) & phi \\
+    \(X\) & \(\chi\) & khi \\
+    \(\Psi\) & \(\psi\) & psi \\
+    \(\Omega\) & \(\omega\) & omega \\
+    \bottomrule
+  \end{tabular}\label{tbl:greekalpha}
+\end{table}
+
+Oftast brukar bokstäverna väljas så att de underlättar för minnet, exempelvis 
+\(b\) för blomma och \(k\) för kruka.
+Sedan kan man använda subskript, exempelvis kan vi beteckna de olika blommorna 
+ovan som \(b_1, b_2\) och så vidare.
+Då kan vi skilja blommorna från krukorna, som vi kan benämna \(k_1, k_2\) och 
+så vidare.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% VAD ÄR MATEMATIK?
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Vad är matematik?}
+% - Skillnaden mellan matematiken och andra vetenskaper.
+% - Abstrakt konstruktion som endast finns i sinnet.
+% - Naturvetenskap i Sverige, filosofi i resten av världen.
+%   - Sveriges störta bidrag till matematikhistorien är att vi tog död på René
+%     Descartes (Touraine, 1596--Stockholm, 1650).
+% - Behöver inte ha någon till synes uppenbar tillämpning, det är vackert.
+%   - Pierre de Fermat (160{1,7,8}--1665), advokat, upphovsman till Fermats
+%     lilla sats och Fermats stora (sista) sats.
+%   - Fermat--Euler satsen är grunden för kryptosystemet när man loggar in på
+%     banken via internet.
+% - Demokratiskt organiserad. Alla kan bidra, ex. Fermat var advokat.
+Som antyddes ovan, kan matematiken beskrivas som studiet av abstrakta 
+konstruktioner.
+Med abstrakta konstruktioner menar vi saker som endast finns i våra tankar, 
+eller vad Platon (cirka 428--348 f.v.t.) kallade \enquote{idévärlden}.
+Vi sätter upp axiomen och definitionerna, vilka vi skulle kunna kalla våra 
+spelregler, och undersöker sedan vad dessa spelregler ger upphov till.
+
+Historiskt har matematiken ofta varit sammankopplad med studiet av
+verkligheten.
+Vi har kunnat studera verkligheten med hjälp av matematiken genom att våra
+grundregler varit grundläggande principer för verkligheten\footnote{%
+  Se exempelvis Euklides postulat för geometrin i \cref{ch:Geometri} eller~\cite[kap.\ 4]{Kline1990mtf1}.
+}.
+Men trots detta är matematiken skild från verkligheten.
+De axiom vi utgår ifrån behöver inte vara principer från verkligheten.
+Det finns matematiska konstruktioner som kan te sig så verklighetsfrånkopplade
+att icke-matematiker ifrågasätter varför de studeras, och detta för oss in på
+ett viktigt konstaterande:
+Matematiken har inte alltid studerats enbart för att kunna dra slutsatser om
+verkligheten.
+Många matematiker genom historien studerade matematiken enbart för den rena
+matematikens skull --- för att den var vacker, inte för att den gick att
+tillämpa på verkligheten.
+De ville utforska den värld som spänns upp av axiomen.
+Exempel på sådana är Pierre de Fermat (cirka 1607--1650) som är upphovsman till 
+den kända \emph{Fermats stora sats}.
+Han var advokat och amatörmatematiker.
+Fermats stora sats eller \emph{Fermats sista sats} säger att ekvationen
+\(x^n+y^n=z^n\), där \(x,y\) och \(z\) är heltal, saknar lösningar för heltal
+\(n\) som är större än två.
+Fermat lämnade en anteckning i marginalen av sin kopia av Diophantus (omkring 
+år 250) bok \emph{Arithmetica} att han hade ett bevis för detta, men att 
+marginalen var för liten för att rymma det.
+Det tog matematiker ända fram till år 1994 att bevisa satsen, så möjligen
+hade Fermat inte ett korrekt bevis då beviset som togs fram inryms på tusentals 
+sidor och krävde hundratals år av matematisk utveckling.
+Han hade däremot ett korrekt bevis för sin \emph{lilla sats} som säger att om
+\(p\) är ett primtal, då ger \(a^{p-1}\) alltid resten \(1\) vid division med
+\(p\).
+(Detta tas upp i \cref{ch:Talteori}.)
+Leonard Euler (1707--1783) generaliserade Fermats lilla sats till att gälla även
+sammansatta tal, och denna generalisering är känd som \emph{Eulers sats} eller 
+ibland \emph{Fermat--Eulers sats}.
+Resultaten för dessa hade inget tillämpningsvärde för tiden, utan drivkraften
+var att utforska matematikens vackra värld och finna vackra resultat som dessa.
+År 1978 publicerades dock en tillämpning av satsen.
+Det var Ronald Rivest (1947--), Adi Shamir (1952--) och Leonard Adleman 
+(1945--) som då publicerade ett kryptosystem sedermera känt som RSA\@.
+RSA-systemet bygger på Eulers sats och systemet ligger till grund för
+mycket av den säkra kommunikationen som sker på internet idag.
+Det dröjde alltså cirka 300 år innan någon fann en tillämpning, innan dess var 
+det vara ett vackert resultat.
+
+Detta visar även vikten av den så kallade grundforskningen, den forskning som 
+inte har någon omedelbar tillämplighet, utan enbart syftar till att fördjupa 
+mänsklighetens kunskap inom området.
+Detta är inte viktigt bara för matematiken utan för alla vetenskaper.
+För vi kan ställa oss frågan: hade vi hade haft säker kommunikation på internet
+idag om vi bara utforskat det som verkat direkt tillämpbart?
+
+%Vi ska med det gå vidare till nästa kapitel som handlar om matematikens grund
+%-- logik och bevis.
+%Det är logiken som är matematikens verktyg för att resonera kring de axiom som
+%vi antagit.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% UPPLÄGG
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\section{Bokens upplägg}
+%...
+%

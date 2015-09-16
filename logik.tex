@@ -1,0 +1,426 @@
+\chapter{Logik och bevis}
+\label{ch:Logik}
+\lettrine{M}{atematiken har sin} grund i logiken.
+Det är logiken som ger matematiken möjligheten till ett resonemang och
+möjligheten till härledning.
+Matematiken utgår från några få grundläggande antaganden, kallade \emph{axiom},
+från vilka matematiska resultat härleds.
+En matematiker nöjer sig således inte med att undersöka några exempel -- eller
+göra experiment -- inte ens tusen- eller miljontals exempel duger.
+Det är detta som skiljer matematiken från exempelvis fysiken och kemin, trots
+att dessa till mycket stor omfattning använder matematiken som hjälpmedel.
+Vi känner inte till alla grundläggande principer för fysiken och kemin, utan 
+det är (återstoden av) dessa vi försöker att finna genom grundforskningen inom 
+dessa ämnen.
+Vi känner däremot till alla grundläggande principer för matematiken, detta för
+att matematiken är skapad av oss -- det är vi som bestämt dessa principer.
+I detta kapitel ska vi lära oss mer om dessa.
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% LOGIK
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Logik}
+
+All matematisk argumentation består av \emph{utsagor}.
+Utsagor\index{utsaga} är deklarativa meningar som kan klassificeras som 
+antingen \emph{sanna} eller \emph{falska}.
+Vi behöver inte alltid veta precis vilket, men det måste vara den ena eller den
+andra -- aldrig båda.
+Detta kallas inom logiken för \emph{lagen om det uteslutna tredje}\index{lagen 
+om det uteslutna tredje}.
+Om vi tittar på följande meningar:
+\begin{enumerate}
+  \item Denna text är skriven på svenska.
+  \item Grön är en fin färg.
+  \item Denna mening är falsk.
+  \item Det finns oändligt många primtalstvillingar.
+  \item \(x^2+1=0\)
+\end{enumerate}
+
+Den första meningen är en utsaga, och den är sann.
+Den andra är ej en utsaga i logisk bemärkelse, det är en smaksak.
+Den tredje meningen är ej en utsaga, den kan varken vara sann eller falsk
+eftersom att det leder till motsägelsefulla slutsatser.
+Den fjärde meningen är en utsaga, ingen vet dock om den är sann eller falsk.
+Den femte och sista symbolföljden är en utsaga, men vi vet inte vad \(x\) är så
+vi kan inte uttala oss om den skulle vara sann eller falsk.
+Detta visar vikten av att tydligt specificera alla delar av en utsaga, så att
+det är alldeles klart vad vi menar.
+Den femte utsagan skulle behöva ändras till exempelvis \enquote{det finns ett
+komplext tal \(x\) sådant att \(x^2+1=0\)} för att den skulle vara sann.
+Om vi istället ändrat den till \enquote{det finns ett heltal \(x\) sådant att
+\(x^2+1=0\)} skulle den vara falsk oavsett hur vi väljer \(x\) eftersom att
+det inte finns ett sådant heltal.  En utsaga som alltid är falsk kallar vi för 
+\emph{motsägelse}\index{motsägelse!utsaga} eller
+\emph{kontradiktion}\index{kontradiktion|see {motsägelse}}.
+En utsaga som alltid är sann kallar vi för \emph{tautologi}\index{tautologi}.
+
+Två utsagor \(P\) och \(Q\) sägs vara logiskt 
+ekvivalenta\index{ekvivalens!logisk} om \(P\) är sann
+precis när \(Q\) är sann och följaktligen om \(P\) är falsk precis när \(Q\)
+är falsk.
+Vi skriver detta som \(P\equiv Q\).
+
+\subsection{Kombinerade utsagor}
+
+Vi vill också kunna forma nya utsagor från redan kända, detta genom att
+kombinera och modifiera dem.
+Om \(P\) är en utsaga, då säger vi att \emph{negationen}\index{negation!logisk} 
+av \(P\), betecknad \(\lnot P\) eller \(\tnot P\), är falsk precis när \(P\) är 
+sann och sann precis när \(P\) är falsk.
+Vi kommer då fram till \emph{lagen om dubbelnegation}\index{lagen om 
+dubbelnegation}.
+Om vi funderar på vad som händer om vi tar \(\lnot(\lnot P)\) så kommer vi
+fram till att \(P\equiv \lnot(\lnot P)\).
+\begin{example}
+  Ett exempel på negation, låt \(P\) vara utsagan \enquote{vi befinner oss i
+  Sverige}.
+  Då blir \(\lnot P\) \enquote{vi befinner oss inte i Sverige}.
+  Vi kan också se att \(\lnot(\lnot P)\) blir \enquote{att vi inte befinner oss 
+  inte i Sverige}, vilket är lite svårare att läsa men resulterar i att vi 
+  måste befinna oss i Sverige.
+\end{example}
+\begin{example}
+  Vi kan också titta på följande utsaga, \enquote{alla svenskar tycker om
+  surströmming}.
+  Negationen av den utsagan är \emph{inte} att ingen svensk tycker om
+  surströmming, utan den är \enquote{inte alla svenskar tycker om 
+  surströmming}.
+  Det räcker då med att det finns en svensk som inte tycker om
+  surströmming -- detta är en viktig skillnad att inte ta fel på!
+\end{example}
+
+Vi kan också kombinera utsagor genom \emph{konjunktioner}\index{konjunktion}.
+Om \(P\) och \(Q\) är utsagor, då betecknar vi konjunktionen som \(P\tand Q\)
+eller \(P\land Q\).
+Konjunktionen är sann då både \(P\) och \(Q\) båda är sanna och falsk annars.
+\begin{example}\label{ex:KonjunktionInternet}
+  Låt \(P\) vara utsagan \enquote{jag bor i Sverige} och \(Q\) vara utsagan 
+  \enquote{jag har en internetuppkoppling}.
+  Då kan vi skapa den nya utsagan \(P\land Q\) som blir \enquote{jag bor 
+    i Sverige \emph{och} jag har en internetuppkoppling}.
+\end{example}
+
+\begin{exercise}
+  När är de olika utsagorna \(P\), \(Q\) och \(P\land Q\) i
+  \cref{ex:KonjunktionInternet} sanna respektive falska?
+\end{exercise}
+
+Vi har också \emph{disjunktionen}\index{disjunktion} som betecknas \(P\tor Q\) 
+eller \(P\lor Q\).
+Disjunktionen är sann om antingen \(P\) eller \(Q\) eller båda är sanna, och är
+således falsk endast när \(P\) och \(Q\) båda är falska.
+\begin{example}
+  Julfika kräver lussebullar \emph{eller} julfika kräver pepparkakor.
+  Denna utsaga säger att om vi fikar lussebullar, då är det julfika.
+  Den säger också att det är julfika om vi fikar pepparkakor.
+  Den säger också att det är julfika om vi fikar både lussebullar och 
+  pepparkakor samtidigt.
+\end{example}
+
+Konjunktionen och disjunktionen sammanfattas i en sanningstabell i
+\cref{tbl:SanningKonjunktionDisjunktion}.
+
+\begin{table}
+  \caption{%
+    Sanningstabell för konjunktionen och disjunktionen.
+    S betecknar sant och F betecknar falskt.
+  }
+  \begin{tabular}{cccc}
+    \(P\)  & \(Q\)   & \(P\land Q\)  & \(P\lor Q\) \\
+    \toprule
+    S      &  S      & S             & S \\
+    S      &  F      & F             & S \\
+    F      &  S      & F             & S \\
+    F      &  F      & F             & F \\
+    \bottomrule
+  \end{tabular}\label{tbl:SanningKonjunktionDisjunktion}
+\end{table}
+
+\begin{exercise}\label{xrc:tartkalas}
+  Vilken av följande logiska utsagor passar bäst för ett tårtkalas?
+  På ett kalas
+  \begin{enumerate}
+    \item äts tårta \emph{och} dricks saft \emph{och} äts kakor
+      \emph{och} dricks kaffe \emph{och} dricks te.
+    \item äts tårta \emph{eller} dricks saft \emph{eller} äts kakor
+      \emph{eller} dricks kaffe \emph{eller} dricks te.
+  \end{enumerate}
+\end{exercise}
+
+\begin{exercise}
+  Ingen av utsagorna i \cref{xrc:tartkalas} är egentligen riktigt bra 
+  utsagor för att avgöra om något är ett tårtkalas.
+  \begin{enumerate}
+    \item Diskutera bristerna i de olika utsagorna.
+    \item Utforma en egen bättre utsaga.
+  \end{enumerate}
+\end{exercise}
+
+Hittills har vi kombinerat konjunktioner med konjunktioner och disjunktioner 
+med disjunktioner, men det går naturligtvis även att kombinera konjunktioner 
+med disjunktioner.
+Vi visar här ett exempel på detta.
+
+\begin{example}\label{ex:aldersgrans}
+  I Sverige är åldersgränserna för film följande: under 7 år, under 11 år och 
+  under 15 år~\cite{aldersgranser}.
+  En film som inte får ses av barn under 11 år får ses av barn som uppfyller 
+  följande utsaga: barnet är minst 11 år \emph{eller} barnet är minst 7 år 
+  \emph{och} i vuxens sällskap.
+  Notera att vi här kombinerat tre utsagor, först med disjunktion och sedan med 
+  konjunktion.
+\end{example}
+
+\begin{exercise}
+  Du kanske märkte av ett problem med utsagan i \cref{ex:aldersgrans}, om 
+  inte kommer du att uppmärksamma det nu.
+  Utsagan i exemplet har följande form: \(P\lor Q\land R\).
+  Undersök om det spelar någon roll om vi tar \(P\lor Q\) eller \(Q\land R\) 
+  först, det vill säga om \(P\lor (Q\land R)\equiv (P\lor Q)\land R\).
+\end{exercise}
+
+\begin{exercise}
+  Testa att kombinera negationer, konjunktioner och disjunktioner, går det
+  att forma några logiskt ekvivalenta utsagor?
+\end{exercise}
+
+\subsection{Implikationer}
+
+Implikation är synonymt med ordet 
+\emph{medför}\index{implikation}\index{medför|see {implikation}}.
+Om \(P\) och \(Q\) är utsagor säger vi att \(P\) \emph{implicerar} \(Q\) eller
+\emph{om \(P\), då \(Q\)}.
+Vi ska undersöka när denna sammansatta utsaga bör vara sann och när den bör
+vara falsk.
+Låt oss formulera ett exempel.
+\begin{example}
+  Låt \(P\) vara utsagan \enquote{jag vinner pengar} och \(Q\) vara utsagan
+  \enquote{jag köper nya böcker till skolan}.
+  Utsagan \(P\implies Q\) blir då \enquote{\emph{om} jag vinner pengar,
+  \emph{då} köper jag nya böcker till skolan}.
+\end{example}
+Implikationen är uppenbart falsk om jag vinner pengar men inte köper böcker till
+skolan, men sann om jag köper böcker.
+Annars, om jag inte vinner pengar, då har jag heller inte lovat att köpa
+böcker till skolan.
+Då måste utsagan vara sann i det fallet.
+Men att jag inte vinner pengar hindrar mig ju inte att köpa böcker till
+skolan ändå, följaktligen borde utsagan vara sann även i det fallet.
+Det är detta resonemang som gjort att sanningsvärdena för implikationen är 
+valda som de är.
+Implikationens olika sanningsvärden sammanfattas i den vänstra delen av 
+\cref{tbl:SanningImplikation}.
+
+Vi kan naturligtvis vända på implikationen, om \(P\) och \(Q\) är utsagor och
+\(P\implies Q\) då säger vi att dess \emph{invers}\index{invers!logisk} är 
+\(Q\implies P\).
+Inversen för en implikation är inte nödvändigtvis logiskt ekvivalent med
+implikationen.
+Ett exempel får illustrera.
+\begin{example}\label{ex:kontrapositiv}
+  Låt \(P\) vara utsagan \enquote{vi är i Stockholm} och \(Q\) vara utsagan 
+  \enquote{vi är i Sverige}.
+  Då blir \(P\implies Q\) utsagan \enquote{om vi är i Stockholm, då är vi i
+  Sverige}.
+  Dess invers \(Q\implies P\), \enquote{om vi är i Sverige, då är vi i
+  Stockholm}, är däremot inte sann eftersom att vi skulle kunna vara i
+  exempelvis Sundsvall, Göteborg eller Kiruna som också är städer i Sverige.
+
+  Om vi däremot tittar på utsagan \(\lnot Q\implies \lnot P\), det vill säga
+  \enquote{om inte vi är i Sverige, då är vi inte i Stockholm}, ser vi att 
+  denna måste vara sann samtidigt som \(P\implies Q\).
+\end{example}
+Den senare utsagan i \cref{ex:kontrapositiv}, \(\lnot Q\implies \lnot P\), 
+kallas för den \emph{kontrapositiva}\index{kontrapositiv!utsaga} utsagan av 
+\(P\implies Q\).
+
+Om \(P\implies Q\) och \(Q\implies P\) båda skulle vara sanna, vilket ibland är 
+fallet, då skriver vi detta som \(P\lequiv Q\).
+Utsagan \(P\lequiv Q\) kallas för 
+\emph{dubbelimplikation}\index{dubbelimplikation|see {logisk ekvivalens}} eller
+\emph{ekvivalens}\index{ekvivalens!logisk} och är sann då \(P\) och \(Q\) båda 
+är sanna och då de båda är falska.
+Den utläses som \emph{\(P\) om och endast om \(Q\)}\index{om och endast om|see 
+{logisk ekvivalens}}.
+\enquote{Om och endast om} förkortas ibland som \enquote{omm}.
+Vi kan se att \(\lequiv\) får samma betydelse som \(\equiv\).
+
+\begin{exercise}
+  Undersök några olika logiska utsagor, likt den kontrapositiva utsagan, och se 
+  om du kan finns några intressanta ekvivalenser.
+\end{exercise}
+
+Vi ska nu avsluta med en viktig logisk ekvivalens till implikationen.
+Denna ligger till grund för motsägelsebevis.
+Utsagan \((P\land\lnot Q)\implies C\), där \(C\) är en motsägelse och
+därmed alltid är falsk, är logiskt ekvivalent med \(P\implies Q\).
+Detta ses tydligast i en sanningstabell, och den är given i
+\cref{tbl:SanningImplikation} tillsammans med implikationen och dess
+kontrapositiva utsaga.
+Implikationen \(P\implies Q\) är bara falsk när \(P\) är sann och \(Q\) är
+falsk.
+Konjunktionen \(P\land\lnot Q\) är sann endast när \(P\) är sann och \(Q\) är
+falsk.
+Om \(C\) alltid är falsk, då kommer \(P\land\lnot Q\implies C\) att vara falsk
+endast när \(P\land\lnot Q\) är sann.
+Men det är ju precis när \(P\) är sann och \(Q\) är falsk, det vill säga när
+\(P\implies Q\) är falsk.
+Följaktligen måste de vara logiskt ekvivalenta.
+
+\begin{table}
+  \caption{%
+    Sanningstabell för implikationen och dess logiskt ekvivalenta former.
+    S betecknar sant och F betecknar falskt.
+  }
+  \begin{tabular}{ccccccc}
+    \(P\) &
+    \(Q\) &
+    \(P\implies Q\) &
+    \(\lnot(P\land \lnot Q)\) &
+    \(\lnot Q\implies \lnot P\) &
+    \(C\) & \((P\land\lnot Q)\implies C\) \\
+    \toprule
+    S & S & S & S & S & F & S \\
+    S & F & F & F & F & F & F \\
+    F & S & S & S & S & F & S \\
+    F & F & S & S & S & F & S \\
+    \bottomrule
+  \end{tabular}\label{tbl:SanningImplikation}
+\end{table}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% AXIOM, SATSER OCH BEVIS
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Axiom, satser och bevis}
+
+För att det ska kunna gå att härleda någonting måste det finnas
+några grundläggande utsagor som en grund att bygga på.
+Dessa utsagor kallar vi för \emph{axiom}\index{axiom}, och det är från dessa
+alla matematiska härledningar utgår.
+Vi har också definitioner som indirekt kan specificera axiom.
+
+Vi har ovan redan sett några axiom, nämligen de logiska axiomen.
+Det vill säga sanningstabellerna vi tittat på ovan, de fungerar som axiom för 
+logiken.
+Vi var dock inte tydliga med att dessa var axiom eftersom att vi inte visste 
+vad ett axiom var då.
+Vi ska i kommande kapitel ta upp de matematiska axiomen.
+Det finns axiom som används i nästan all matematik, dessa är axiomen för
+mängdläran (\cref{ch:Mangder}), och det finns olika axiomuppsättningar 
+inom specifika områden inom matematiken.
+Exempelvis ska vi se en axiomuppsättning för geometri 
+i \cref{ch:Geometri}, denna gäller för klassisk geometri, det vill säga 
+geometri i plana ytor.
+I sfärisk geometri, geometri på ytan av en rund boll, som vi inte tar upp 
+i denna volym, byts några av axiomen ut.
+
+Grunden må vara viktig att stå på, men möjligheten att ta oss vidare till nya 
+resultat -- satser -- är också av yttersta vikt.
+Faktum är ju att vi tidigare behövde logiken för att kunna resonera och dra
+slutsatser, för att kunna bevisa nya resultat.
+Nya resultat, som är implikationer eller dubbelimplikationer, sammanfattas i
+något som kallas för \emph{satser}\index{sats}.
+En sats ges oftast på formen \enquote{om dessa villkor \(P\) är uppfyllda, då 
+gäller även \(Q\)}, där \(P\) och \(Q\) är utsagor.
+Men en sats kan inte bara presenteras utan vidare, den kräver alltid ett
+\emph{bevis}\index{bevis}.
+Ett bevis är en logisk härledning som utgår från axiomen och andra tidigare
+bevisade satser för att visa att om \(P\) är sann då måste även \(Q\) vara sann
+precis då.
+Det vill säga visa att implikationen är sann.
+
+Satsen är huvudbegreppet, men vi har även andra typer av satser.
+Vi har \emph{lemman}\index{lemma}, som är hjälpsatser\index{hjälpsats}.
+De är också satser, men av mindre betydelse.
+Dessa behöver vi för att visa ett mindre resultat för att beviset för en annan
+sats inte ska bli onödigt långt.
+Vi har även \emph{korollarier}\index{korollarium}, som är
+följdsatser\index{följdsats}.
+Detta är satser som följer mer eller mindre direkt från en annan sats och har
+därför ett mycket kort bevis.
+
+Vi ska nu titta på några vanliga bevismetoder.
+När ett bevis genomförs och presenteras brukar detta avslutas med 
+\textsc{Q.E.D.}, som är en förkortning för latinets \emph{Quod Erat
+Demonstrandum} och betyder \enquote{vilket skulle visas}.
+Detta är ett arv från tiden då latin var det vetenskapliga språket och mer
+eller mindre all vetenskaplig kommunikation skedde på latin.
+Det skulle kunna jämföras med engelskans position idag.
+
+Vi kommer nedan att beskriva den bakomliggande idén för respektive bevismetod.
+Därefter kommer vi att se dem tillämpas i resterande kapitel i boken.
+
+\subsection{Motexempelbevis}
+
+Vi börjar med den enklaste bevismetoden.
+Om någon skulle påstå att \enquote{alla svenskar tycker om surströmming}, då 
+räcker det med att vi hittar en svensk som inte tycker om surströmming för att
+motbevisa påståendet.
+Det vill säga, vi hittar ett motexempel\index{motexempelbevis}.
+Kom ihåg från tidigare att negationen av utsagan \enquote{alla svenskar tycker 
+om surströmming} är \enquote{det finns åtminstone en svensk som inte tycker om
+surströmming} och att det är denna utsaga som vi bevisar genom att finna en
+sådan svensk.
+
+\subsection{Direkta bevis}
+
+Vi låter \(P\) och \(Q\) vara utsagor.
+För att \emph{hypotesen}\index{hypotes} \(P\) ska implicera 
+\emph{konklusionen}\index{konklusion} \(Q\) måste \(P\) vara sann
+precis när \(Q\) är sann.
+Vi åstadkommer detta genom konstruktionen av en kedja av implikationer
+\[
+  P\implies R_1, R_1\implies R_2, \ldots, R_n\implies Q.
+\]
+Enligt \emph{lagen om syllogism}\index{lagen om syllogism} måste då \(P\implies 
+Q\).
+Karakteristiskt för denna bevismetod är att det bara är att \enquote{jobba på} 
+för att komma fram till konklusionen.
+
+\begin{exercise}
+  Övertyga dig själv med hjälp av sanningstabeller
+  \begin{enumerate}
+    \item att \(P\implies R_1\) och \(R_1\implies R_2\) och \(R_2\implies Q\) 
+      är ekvivalent med \(P\implies R_1\implies R_2\implies Q\), därefter
+    \item att \(P\implies Q\) är ekvivalent med \(P\implies R_1\implies 
+      R_2\implies \cdots\implies Q\).
+  \end{enumerate}
+\end{exercise}
+
+\subsection{Kontrapositiva bevis}
+
+Låt \(P\) och \(Q\) vara utsagor.
+Eftersom att vi tidigare, i \cref{tbl:SanningImplikation}, sett att den
+kontrapositiva\index{kontrapositiv!bevis} implikationen \(\lnot Q\implies\lnot 
+P\) är logiskt ekvivalent
+med \(P\implies Q\) kan vi likväl bevisa den kontrapositiva implikationen som
+\(P\implies Q\).
+Vi vill kunna göra detta för att ibland kan det vara lättare att visa än \(P\) 
+medför \(Q\).
+
+\subsection{Motsägelsebevis}
+
+Motsägelsebeviset\index{motsägelse!bevis} och det direkta beviset är kanske de 
+bevismetoder som används flitigast i denna bok.
+Motsägelsebeviset är effektivt och kan ofta vara enklare att använda än att
+konstruera ett direkt bevis.
+Metoden använder en logisk ekivalens, precis som föregående metod, nämligen att
+\((P\land\lnot Q)\implies C\) är logiskt ekvivalent med \(P\implies Q\) när
+\(C\) är en motsägelse.
+Den säger att vi ska anta vår hypotes \(P\) och även anta motsatsen
+\(\lnot Q\) till vår önskade konklusion \(Q\).
+Om dessa antaganden tillsammans leder till en utsaga som alltid är falsk, det
+vill säga en motsägelse \(C\), då har vi visat att \(P\) implicerar \(Q\)
+eftersom att detta är logiskt ekvivalent.
+
+
+\section{Fördjupande läsning}
+
+För vidare läsning om logik, se exemeplvis bilaga A i \emph{Introduction to 
+real analysis} av \citet{Bartle2000itr} eller, för ytterligare fördjupning, del 
+A i \emph{Foundations of logic and mathematics} av 
+\citet{nievergelt2002foundations}.
+

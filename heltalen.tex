@@ -1,0 +1,535 @@
+\chapter{De hela talen}
+\label{ch:Heltalen}
+\lettrine{V}{i är nu välbekanta} med de naturliga talen,
+\(\N=\{0,1,2,\ldots\}\).
+Vi har operationerna addition och multiplikation och vet hur dessa fungerar.
+I detta kapitel kommer vi att utöka de naturliga talen med avseende på
+addition.
+
+Om vi adderar två tal \(a\) och \(b\) får vi ett tredje tal \(c\), vi skriver
+detta som \(a+b=c\).
+Det finns dock inget sätt att ta oss tillbaka till \(a\), det vill säga det
+finns inget naturligt tal \(d\) sådant att \(c+d=a+b+d=a\).
+Ett annat sätt att säga det på är att det finns inga naturliga tal \(n\) och
+\(m\) sådana att deras summa \(n+m=0\) är lika med identitetselementet noll.
+Detta är dock en väldigt intressant och önskvärd egenskap.
+Vi ska förtydliga vad vi menar och ge denna egenskap ett namn.
+\begin{definition}\label{def:invers}\index{invers}
+  Givet en mängd \(M\) med en definierad binär operation \(\diamond\colon 
+  M\times M\to M\) och ett identitetselement \(e\).
+  Ett element \(b\) kallas för \emph{inversen till} ett element \(a\) om
+  \(a\diamond b = b\diamond a = e\).
+\end{definition}
+\begin{exercise}
+  Utforska inversbegreppet.
+  Frågor att inspirera:
+  I \cref{def:invers}, är \(a\) inversen till något element?
+  Hur många inverser kan ett element ha?
+  Har alla element en invers?
+\end{exercise}
+%\begin{remark}
+%  Av inversens natur följer att om \(b\) är inversen till \(a\), då är även
+%  \(a\) inversen till \(b\).
+%\end{remark}
+
+Vi ska i detta kapitel tillföra denna egenskap till additionen för de naturliga
+talen.
+Resultatet är vad som kallas de hela talen, och mängden av de hela talen
+betecknas\footnote{Anledningen till att de betecknas med \(\Z\) är tyskans
+\emph{Zahlen} som betyder tal.} \(\Z\).
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% UTÖKNINGEN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Utökningen av de naturliga talen}
+\label{sec:HeltalensKonstruktion}
+Låt oss nu skapa de hela talen.
+Det enda vi har att tillgå är de naturliga talen, dessa vet vi att de
+existerar och hur de fungerar.
+Vi börjar med att låta mängden \(M = \N\times\N =
+\{(a,b)\colon a\text{ och }b\text{ är naturliga tal}\}\) vara mängden av alla
+ordnade par av naturliga tal.
+\begin{example}
+  Vi har exempelvis att \((1,2)\in M\) och \((2,1)\in M\) samt att
+  \((1,2)\neq (2,1)\).
+\end{example}
+
+Låt oss nu införa en relation \(\sim\) på denna mängd.
+Om \((a,b)\) och \((c,d)\) är ordnade par av naturliga tal, det vill säga
+element i mängden \(M\), då vill vi att \((a,b)\sim (c,d)\) ska vara sant
+precis när \(a+d=b+c\).
+Denna relation \(\sim\) är faktiskt en ekvivalensrelation.
+För att visa detta kollar vi att relationen uppfyller axiomen i
+\cref{def:Ekvivalensrelation} för en ekvivalensrelation.
+Additionen är kommutativ och eftersom att \(a+b=b+a\) har vi
+\((a,b)\sim (a,b)\), och följaktligen är den reflexiv.
+Om \((a,b)\sim (c,d)\) då är \(a+d=b+c\) och således 
+\begin{align*}
+  c+b &= b+c,\\
+  d+a &= a+d \text{\ och\ } \\
+  c+b &= d+a.
+\end{align*}
+Den sista ekvationen ger precis \((c,d)\sim (a,b)\).
+Relationen måste då vara symmetrisk.
+För att visa transitiviteten behövs följande resultat.
+\begin{lemma}\label{lem:AdditionInjektiv}
+  Låt \(x\) och \(y\) vara naturliga tal.
+  Om \(z\) är ett naturligt tal och \(x+z=y+z\) då är \(x=y\).
+\end{lemma}
+\begin{exercise}
+  Bevisa \cref{lem:AdditionInjektiv}.
+\end{exercise}
+Om \((a,b)\sim (c,d)\) och \((c,d)\sim (e,f)\), då har vi först att
+\begin{equation}
+  \label{eq:VisaHeltalensEkvivalensrelation1}
+  a+d = b+c
+\end{equation}
+och sedan att
+\begin{equation}
+  \label{eq:VisaHeltalensEkvivalensrelation2}
+  c+f=d+e.
+\end{equation}
+Detta ger
+\begin{equation*}
+  a+d+f = b+c+f = b+d+e.
+\end{equation*}
+Eftersom att additionen är kommutativ får vi \(a+f+d = b+e+d\) och
+enligt \cref{lem:AdditionInjektiv} har vi då att \(a+f = b+e\) som
+betyder att \((a,b)\sim (e,f)\).
+Eftersom att relationen då även är transitiv är relationen en
+ekvivalensrelation.
+
+Vi betecknar ekvivalensklasserna på följande sätt:
+Om \((a,b)\) är ett element i \(M\), då är
+\([(a,b)]=\{(x,y)\in M\colon (a,b)\sim (x,y)\}\).
+Det vill säga, \([(a,b)]\) innehåller alla talpar i \(M\) som uppfyller
+ekvivalensrelationen med talparet \((a,b)\).
+\begin{example}
+  Vi har att \((0,0)\sim (1,1)\) eftersom att \(0+1 = 0+1\).
+  Följaktligen har vi \([(0,0)]=[(1,1)]\) och \((1,1)\in [(0,0)]\), men
+  naturligtvis även \((0,0)\in [(0,0)]\).
+\end{example}
+\begin{remark}
+  Kom ihåg att det inte spelar någon roll om vi väljer \((0,0)\) eller
+  \((1,1)\) som representant för
+  ekvivalensklassen \([(0,0)]=[(1,1)]\) eftersom att det är samma
+  ekvivalensklass.
+\end{remark}
+\begin{example}
+  Vi har däremot \((0,0)\nsim (1,0)\) eftersom att \(0+0\neq 0+1\),
+  och följaktligen \((1,0)\notin [(0,0)]\).
+\end{example}
+
+Låt oss nu definiera en binär operation \(+\) som vi kallar för addition och en
+binär operation \(\cdot\) som vi kallar för multiplikation på mängden av
+ekvivalensklasser hos \(M\).
+Vi låter \([(a,b)]+[(c,d)] = [(a+c, b+d)]\) och \([(a,b)]\cdot [(c,d)] =
+[(ac+bd, ad+bc)]\).
+Vi måste dock visa att dessa är väldefinierade.
+%\begin{proof}[Väldefinierad addition]
+Om \((a,b)\sim (a^\prime, b^\prime)\) och \((c,d)\sim (c^\prime,
+d^\prime)\), då vill vi visa att \((a+c, b+d)\sim (a^\prime+c^\prime,
+b^\prime+d^\prime)\).
+Vi har från \((a,b)\sim (a^\prime,b^\prime)\) att \(a+b^\prime =
+b+a^\prime\) och från \((c,d)\sim (c^\prime,d^\prime)\) att
+\(c+d^\prime=d+c^\prime\).
+Om vi adderar vänsterleden i de båda ekvationerna, då måste detta vara lika
+med summan av högerleden.
+Det vill säga, \((a+b^\prime) + (c+d^\prime) = (b+a^\prime) +
+(d+c^\prime)\).
+Eftersom att additionen är associativ och kommutativ får vi att
+\begin{equation*}
+  a+c+b^\prime+d^\prime = b+d+a^\prime+c^\prime,
+\end{equation*}
+och således måste \((a+c,b+d)\sim (a^\prime+c^\prime, b^\prime+d^\prime)\).
+%\end{proof}
+\begin{exercise}
+  Visa att multiplikationen också är väldefinierad.
+\end{exercise}
+
+\begin{example}\label{ex:HeltalAddition}
+  Om vi adderar \([(1,2)]\) och \([(2,4)]\) får vi
+  \begin{equation*}
+    [(1,2)]+[(2,4)] = [(1+2,2+4)] = [(3, 6)] = [(0,3)].
+  \end{equation*}
+\end{example}
+\begin{example}\label{ex:HeltalMultiplikation}
+  Om vi multiplicerar \([(1,2)]\) och \([(2,4)]\) får vi
+  \begin{equation*}
+    [(1,2)]\cdot [(2,4)] = [(1\cdot 2 + 2\cdot 4, 1\cdot 4 + 2\cdot 2)] =
+    [(10, 8)] = [(2,0)].
+  \end{equation*}
+\end{example}
+
+Vi har nu objekt med egenskaperna att de beter sig som de naturliga talen, men
+vi kan även addera dem för att få identitetselementet.
+Identitetselementet för addition måste vara ekvivalensklassen \([(0,0)]\).
+Eftersom att \([(a,b)]+[(0,0)] = [(a+0,b+0)] = [(a,b)]\) och
+\([(0,0)]+[(a,b)] = [(0+a,0+b)] = [(a,b)]\) måste \([(0,0)]\)
+vara identitetselementet för addition.
+
+\begin{exercise}
+  Hur skulle de naturliga talen kunna representeras med dessa objekt?
+\end{exercise}
+
+Den additiva inversen till \([(a,b)]\) är \([(b,a)]\) eftersom att
+\([(a,b)]+[(b,a)]=[(a+b,b+a)]=[(a+b,a+b)]\).
+Eftersom att \(0+(a+b)=0+(a+b)\) har vi enligt ekvivalensrelationen att
+\((0,0)\sim (a+b,a+b)\) och därför måste de tillhöra samma ekvivalensklass.
+Detta innebär att \([(a,b)]\) och \([(b,a)]\) måste vara varandras inverser
+under addition.
+
+\begin{exercise}
+  Kan ett tal ha fler än en invers?
+\end{exercise}
+
+Vi sammanfattar detta avsnitt med följande definitioner.
+Vi börjar med att definiera vad de hela talen är.
+\begin{definition}[Heltalen]\index{heltal}
+  Låt \(M=\N\times\N\) vara mängden av alla naturliga talpar och \(\sim\)
+  vara ekvivalensrelationen på mängden \(M\) sådan att \((a,b)\sim (c,d)\)
+  är uppfylld för elementen \((a,b)\) och \((c,d)\) i \(M\) om \(a+d=b+c\).
+
+  Låt \(\Z = M/\!\sim = \{[(a,b)]\colon (a,b)\in M\}\) vara mängden av alla
+  ekvivalensklasser för \(M\) under ekvivalensrelationen \(\sim\).
+  Varje element \(n\) i \(\Z\) kallar vi ett \emph{heltal}.
+
+  Låt också \(0\) beteckna \([(0,0)]\in\Z\), \(1\) beteckna \([(1,0)]\in\Z\)
+  och \(a\) beteckna \([(a,0)]\in\Z\) för alla naturliga tal \(a\).
+  Beteckna också den additiva inversen \([(0,a)]\in\Z\) till \([(a,0)]\) med
+  \(-a\).
+\end{definition}
+De nya beteckningarna och ekvivalensklasserna visas i
+\cref{fig:HeltalensEkvivalensklasser}.
+\begin{figure}
+  \centering
+  \begin{asy}
+    // Courtesy of Thomas Douillard, thomas.douillard at gmail.com
+    // From Wikipedia
+    // import settings
+    import graph;
+    size(10cm,0);
+    // returns a pair representation of a relative number
+    // of the equivalent class
+    pair pairRepresentation(int n){//
+            if(n>0){//
+                    return(n,0);
+            }else{//
+                    return(0,-n);
+            }
+    }
+    string nullString(real r){//
+            return "";
+    }
+    void drawCoordinates(pair point, align align=NoAlign){//
+            label("$("+string(point.x)+","+string(point.y)+")$",point,align,
+              fontsize(10));
+    }
+    unitsize(50,50);
+    int num = 5;
+    int i;
+    for (i=-1*num ; i<=num ; ++i) {//
+            pair point = pairRepresentation(i) ;
+            dot(point,red);
+            // equivalence classes labelled with usual names, in blue
+            label("$\mathbf{"+string(i)+"}$",point,5SW,fontsize(10)+blue);
+            int j;
+            for(j=abs(i);j<num;++j) {//
+                    drawCoordinates(point,E);
+                    pair nextpoint = point + (1,1);
+                    draw(point -- nextpoint,blue+Dotted+linewidth(2));
+                    dot(point,red+linewidth(5));
+                    point=nextpoint;
+            }
+            dot(point,red);
+            draw(point -- point+(0.5,0.5),blue+Dotted+linewidth(2));
+            dot(point,red+linewidth(5));
+            drawCoordinates(point,E);
+    }
+    // axes
+    real decay=-0.2;
+    ticks tick=RightTicks(N=0,n=1,end=false,nullString);
+    xaxis("$n_1$",YEquals(decay),decay,num+1.0,tick,Arrow);
+    yaxis("$n_2$",XEquals(decay),decay,num+1.0,LeftTicks(N=0,n=1,end=false,nullString),Arrow);
+  \end{asy}
+  \caption{%
+    Ekvivalensklasser för par av naturliga tal \((n_1,n_2)\) under
+    relationen \(\sim\).
+    Bild:~\cite{Wikipedia2013Integer}.
+  }\label{fig:HeltalensEkvivalensklasser}
+\end{figure}
+
+När vi nu vet vad ett heltal är kan det vara passande att införa aritmetiska
+operationer för dem.
+Vi börjar med additionen och fortsätter med multiplikationen senare.
+\begin{definition}[Addition]\index{addition}\index{heltal!addition}
+  Låt \(x=[(a,b)]\) och \(y=[(c,d)]\) vara heltal och \(+\) en binär
+  operation på \(\Z\), kallad \emph{addition}, sådan att
+  \(x+y=[(a,b)]+[(c,d)]\) är lika med \([(a+c,b+d)]\).
+\end{definition}
+\begin{exercise}
+  I \cref{ex:HeltalAddition}, vilka tal adderades och vilket blev resultatet?
+\end{exercise}
+\begin{exercise}
+  Är additionen kommutativ för de hela talen?
+\end{exercise}
+\begin{exercise}
+  Är additionen associativ för de hela talen?
+\end{exercise}
+
+Nu när vi kan addera heltal är det lämpligt att vi tittar på hur vi kan jämföra
+dem annat än med likhet.
+Olikheter infördes med hjälp av additionen för de naturliga talen, det är inte
+förvånande att vi gör detsamma för heltalen.
+\begin{definition}[Olikhet]\index{olikhet}
+  Låt \(x=[(a,b)]\) och \(y=[(c,d)]\) vara heltal.
+  Vi säger att \(x\) \emph{är mindre än} \(y\), betecknat \(x<y\), om
+  \(a+d<b+c\) enligt relationen \(<\) för de naturliga talen.
+  Vi kan också säga att \(y\) \emph{är större än} \(x\) och skriver då
+  \(y>x\).
+  Vi säger att \(x\) \emph{är mindre än eller lika med} \(y\) om \(a+d\leq
+  b+c\), detta betecknas \(x\leq y\).
+  Vi kan också säga att \(y\) \emph{är större än eller lika med} \(x\) och
+  betecknas \(y\geq x\).
+\end{definition}
+
+Nu när vi kan ordna de hela talen är den naturliga efterföljande definitionen
+denna.
+\begin{definition}\index{negativt tal}\index{positivt tal}
+  Låt oss kalla ett tal mindre än noll för ett \emph{negativt} tal, och låt
+  oss kalla ett tal större än noll för ett \emph{positivt} tal.
+\end{definition}
+Vi har nu infört olika namn för talen på båda sidorna om talet noll.
+Notera att enligt denna definition är noll varken positivt eller negativt.
+
+\begin{exercise}
+  Hur ordnas de hela talen?
+\end{exercise}
+
+Nu till inverserna.
+\begin{definition}\index{negation}\index{additiv invers}
+  Om \(x=[(a,b)]\) är ett heltal, då är \(-x=-[(a,b)]=[(b,a)]\) dess
+  \emph{additiva invers}.
+  Denna kallas även för \emph{negationen} av \(x\).
+\end{definition}
+\begin{remark}
+  Låt \(a\) och \(b\) vara heltal och \(-b\) den additiva inversen till
+  \(b\).
+  Normalt skriver vi \(a+(-b)\) som \(a-b\) för att spara in på några tecken.
+  Vi benämner \(a-b\) som \emph{subtraktionen}\index{subtraktion} av \(b\)
+  från \(a\).
+  Ur en matematisk synvinkel är subtraktion inte en egen operation utan vi
+  adderar den additiva inversen för \(b\) till \(a\).
+\end{remark}
+
+\begin{exercise}
+  Visa att ett nollskilt naturligt tal är ett positivt tal.
+\end{exercise}
+\begin{exercise}
+  Visa att den additiva inversen för ett nollskilt naturligt tal är ett
+  negativt tal.
+\end{exercise}
+\begin{exercise}
+  De naturliga talens ordning är \(0 < 1 < 2 < 3 < \ldots\), enligt relationen 
+  \(<\) definierad för de naturliga talen.
+  Gäller denna ordning även för relationen \(<\) definierad för de hela talen?
+\end{exercise}
+
+Den andra aritmetiska operationen, multiplikation, ger vi i den sista
+definitionen.
+\begin{definition}[Multiplikation]\index{multiplikation}\index{heltal!multiplikation}
+  Låt \(x=[(a,b)]\) och \(y=[(c,d)]\) vara heltal och \(\cdot\) en binär
+  operation på \(\Z\), kallad \emph{multiplikation}, sådan att
+  \(x\cdot y=[(a,b)]\cdot [(c,d)]\) är lika med \([(ac+bd,ad+bc)]\).
+  Vi skriver ofta \(xy\) istället för \(x\cdot y\).
+\end{definition}
+\begin{exercise}
+  I \cref{ex:HeltalMultiplikation}, vilka tal multiplicerades och vilket
+  blev resultatet?
+\end{exercise}
+
+Vi ska nu visa ett lemma som vi kommer att behöva i kommande avsnitt.
+Lemmat talar om att produkten av ett helt tal och noll blir noll.
+\begin{lemma}\label{lem:IngenNolldelare}
+  För alla heltal \(a\) gäller att \(a\cdot 0 = 0\cdot a = 0\).
+\end{lemma}
+\begin{proof}
+  Antag att \(a = [(b,c)]\) där \(b\) och \(c\) är naturliga tal.
+  Vi har per definition att \(a\cdot 0 = [(b,c)]\cdot [(0,0)] =
+  [(b\cdot 0 + c\cdot 0, a\cdot 0 + c\cdot 0)] = [(0,0)] = 0\).
+  På samma sätt får vi att \(0\cdot a = [(0,0)]\cdot [(b,c)] = [(0\cdot b +
+  0\cdot c, 0\cdot c + 0\cdot b)] = [(0,0)] = 0\).
+\end{proof}
+
+\begin{exercise}
+  Är multiplikationen kommutativ för de hela talen?
+\end{exercise}
+\begin{exercise}
+  Är multiplikationen associativ för de hela talen?
+\end{exercise}
+\begin{exercise}
+  Är multiplikationen distributiv över additionen för de hela talen?
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ALGEBRAISKA EGENSKAPER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Algebraiska egenskaper för de hela talen}
+\label{sec:HeltalensAlgebraiskaEgenskaper}
+Det är nu dags att sammanfatta de algebraiska egenskaperna för de
+hela talen.
+De hela talen bygger på de naturliga talen och ska vara en utökning av dessa.
+Vi hade för avsikt att de hela talen skulle ha samma algebraiska egenskaper som
+vi visat att de naturliga talen har.
+Vi fortsätter därför härnäst med en sammanfattning av de algebraiska egenskaper
+som de hela talen måste ha.
+Dessa är desamma som för de naturliga talen förutom tillägget om att varje tal
+\(a\) har en additiv invers \(-a\).
+
+\theoremstyle{plain}
+\newtheorem*{AlgebraicPropertiesIntegers}{Algebraiska egenskaper för de hela
+  talen}
+\begin{AlgebraicPropertiesIntegers}\label{def:HeltalenEgenskaper}
+  På mängden \(\Z\) av hela tal definieras två binära operationer,
+  addition (\(+\)) och multiplikation (\(\cdot\)).
+  För addition gäller följande:
+  \begin{description}
+    \item[Kommutativitet] \(a+b=b+a\) för alla \(a,b\in\Z\).
+    \item[Associtivitet] \((a+b)+c=a+(b+c)\) för alla \(a,b,c\in\Z\).
+    \item[Additivt identitetselement] Det finns ett element \(0\in\Z\)
+      sådant att för alla \(a\in\Z\) gäller att \(0+a = a+0 = a\).
+    \item[Additiv invers] För alla \(a\in\Z\) finns ett element \(-a\in\Z\)
+      sådant att \(a + (-a) = (-a) + a = 0\).
+  \end{description}
+  För multiplikation gäller följande:
+  \begin{description}
+    \item[Kommutativitet] \(a \cdot b=b \cdot a\) för alla \(a,b\in\Z\).
+    \item[Associtivitet] \((a \cdot b) \cdot c=a \cdot (b \cdot c)\) för
+      alla \(a,b,c\in\Z\).
+    \item[Multiplikativt identitetselement] Det finns ett element
+      \(1\in\Z\) sådant att för alla \(a\in\Z\) gäller att
+      \(1 \cdot a = a \cdot 1 = a\).
+  \end{description}
+  Utöver detta gäller även
+  \begin{description}
+    \item[Multiplikativ distributivitet över addition]
+      \(a \cdot (b+c) = (a \cdot b) + (a \cdot c)\) och
+      \((b+c) \cdot a = (b \cdot a) + (c \cdot a)\) för alla hela tal
+      \(a,b,c\in\Z\).
+  \end{description}
+\end{AlgebraicPropertiesIntegers}
+
+För en mer detaljerad behandling av dessa egenskaper hänvisas läsaren till 
+\cite{Bartle2000itr,Grillet2007aa}.
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% ALGEBRAISKA EGENSKAPER FÖR DE NEGATIVA TALEN
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Algebraiska egenskaper för de negativa talen}
+Vi är redan bekanta med de naturliga talen, och därmed också den
+delen av de hela talen som motsvarar de naturliga talen.
+Därför ska vi i detta avsnitt fokusera på de nya talen, de heltal \(a<0\) som
+är mindre än noll -- eller de negativa talen.
+
+Låt oss börja med ett av de fundamentala resultaten,
+% (-1)a = -a
+nämligen att ett heltal \(a\) multiplicerat med \(-1\) ger dess invers \(-a\).
+Vi formulerar detta som en sats.
+\begin{theorem}\label{thm:FaktoriseraNegativaTal}
+  Låt \(a\) vara ett heltal.
+  Då är \(a\) multiplicerat med \(-1\) inversen \(-a\) till \(a\).
+  Det vill säga, \((-1)\cdot a = -a\).
+\end{theorem}
+\begin{proof}
+  Vi har att \(1+(-1) = 0\).
+  Om vi multiplicerar noll med ett tal får vi enlingt
+  \cref{lem:IngenNolldelare} fortfarande noll.
+  Följaktligen får vi att \(a(1+(-1))=0\) eftersom att vi då multiplicerar
+  \(a\) med noll.
+  Eftersom att multiplikation är distributiv över addition får vi då att
+  \begin{equation*}
+    a(1+(-1)) = 1\cdot a + (-1)a = a + (-1)a = 0.
+  \end{equation*}
+  Då måste \((-1)a\) vara inversen \(-a\) till \(a\).
+\end{proof}
+\begin{remark}
+  Notera att detta och följande resultat även kan härledas direkt från
+  talparskonstruktionen i \cref{sec:HeltalensKonstruktion} trots att vi
+  i detta bevis väljer att använda oss av de algebraiska egenskaperna givna i
+  \cref{sec:HeltalensAlgebraiskaEgenskaper}.
+\end{remark}
+
+% (-1)(-1) = (-1)^2 = 1
+Vi fortsätter med kanske det mest häpnanväckande resultatet, som är en
+följdsats till föregående.
+\begin{corollary}\label{NegMultNegEqPos}
+  Den additiva inversen \(-1\) till heltalet ett multiplicerad med sig
+  själv är ett.
+  Det vill säga \((-1)(-1) = 1\).
+\end{corollary}
+\begin{proof}
+  Eftersom att \(-1\) är ett heltal följer det från
+  \cref{thm:FaktoriseraNegativaTal} att om vi multiplicerar det med \(-1\)
+  får vi dess invers.
+  Inversen för \(-1\) är \(1\) och således har vi att \((-1)(-1)=1\).
+\end{proof}
+
+\begin{exercise}
+  Om \(a\) och \(b\) är heltal, gäller då att \((-a)(-b) = ab\) för alla
+  heltal \(a\) och \(b\)?
+\end{exercise}
+
+Låt oss avsluta med ett exempel om addition av två negativa tal.
+\begin{example}
+  % (-1)+(-1) = -2
+  Om vi adderar \(-1\) och \(-1\), vad får vi då?
+  Eftersom att vi adderar två lika termer kan vi skriva additionen som
+  multiplikationen \(2\cdot (-1) = (-1)+(-1)\).
+  Vi vet från \cref{thm:FaktoriseraNegativaTal} att ett heltal
+  multiplicerat med \(-1\) är dess invers, då får vi \((-1)+(-1)=2\cdot
+  (-1) = -2\).
+\end{example}
+\begin{example}
+  Vi kan också beräkna summan \((-1)+(-1)\) genom att använda heltalens
+  distributiva egenskap.
+  Eftersom att \((-1)=(-1)\cdot 1\) och att multiplikation är distributiv
+  över addition får vi att \((-1)+(-1) = (-1)(1+1) = (-1)(2) = -2\).
+\end{example}
+\begin{exercise}
+  % (-1)(a+b) = (-a)+(-b)
+  Om \(a\) och \(b\) är heltal,
+  gäller generellt att \((-a)+(-b)=-(a+b)\)?
+\end{exercise}
+
+\begin{exercise}
+  % (-1)(a-b) = (-1)(a+(-b)) = (-a)+b
+  Utred vad \(-(a-b)\) egentligen betyder.
+\end{exercise}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% POTENSER
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\subsection{Potenser för heltalen}
+Vi ska nu införa potenser för de hela talen, likt de vi införde för de
+naturliga talen.
+Vi definierar potenser enligt följande definition.
+\begin{definition}
+  Låt \(a\) vara ett heltal.
+  Vi definierar att \(a^1=a\).
+  Om \(a^{n}\) är definierat för något naturligt tal \(n > 0\), då är
+  \(a^{n+1} = a\cdot a^n\).
+  Vi utläser \(a^n\) som en \emph{\(a\)-potens med exponenten \(n\)}, eller 
+  \emph{\(a\) upphöjt till \(n\)}.
+\end{definition}
+
+\begin{exercise}
+  Utforska potenser för de hela talen.
+  Finns det några intressanta resultat om dessa potenser?
+  %Gäller resultaten vi visat för de naturliga talen?
+\end{exercise}
+

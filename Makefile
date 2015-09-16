@@ -13,13 +13,15 @@ DOCUMENTS=	matematik-1.pdf
 
 FILES=		matematik-1.tex frontmatter.tex backmatter.tex matematik-1.bib
 FILES+= 	preface.tex
-FILES+= 	intro.tex logik.tex mangder.tex
+FILES+= 	intro.tex
+FILES+= 	logik.tex mangder.tex
 FILES+= 	naturliga.tex heltalen.tex talteori.tex
 FILES+= 	rationella.tex reella.tex talsystem.tex
 FILES+= 	ekvationer.tex olikheter.tex potensekvationer.tex
 FILES+= 	geometri.tex trigonometri.tex linjalg.tex
 FILES+= 	procent.tex forandring.tex
 FILES+= 	kombinatorik.tex sannolikhet.tex statistik.tex
+FILES+= 	kursplanering.tex
 
 KRYPTO= 	krypto/krypto.tex krypto/introcrypt.bib
 KRYPTO+= 	krypto/intro.tex krypto/term.tex
@@ -30,7 +32,7 @@ KRYPTO+= 	krypto/vigenere.tex
 KRYPTO+= 	krypto/perfect.tex
 KRYPTO+= 	krypto/modern.tex
 
-FILES+= 	${KRYPTO}
+#FILES+= 	${KRYPTO}
 
 matematik-1.pdf: ${FILES}
 
@@ -38,7 +40,7 @@ figs/skytale.eps: krypto/figs/skytale.eps
 figs/english_letter_frequencies.eps: krypto/figs/english_letter_frequencies.eps
 
 figs/skytale.eps figs/english_letter_frequencies.eps:
-	${CP} $^ $@
+	cp -R $^ $@
 
 clean:
 	${RM} krypto/krypto.aux pwdanalysis/pwdinclude.aux
