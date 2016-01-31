@@ -3,11 +3,15 @@
 %\end{abstract}
 
 \ifdraft{}{%
+    \if@twoside
     \newgeometry{rmargin=4cm,lmargin=4cm}
+    \fi
 }
 \maketitle
 \ifdraft{}{%
+    \if@twoside
     \restoregeometry{}
+    \fi
 }
 %\begin{titlepage}
 %   \begin{center}

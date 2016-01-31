@@ -8,7 +8,8 @@
 %   http://creativecommons.org/licenses/by-sa/3.0/.
 %
 
-\documentclass[a4paper,titlepage,reqno,final,twoside]{amsbook}
+\documentclass[a4paper,titlepage,reqno,final,oneside]{amsbook}
+%\documentclass[a4paper,titlepage,reqno,final,twoside]{amsbook}
 %\documentclass[a4paper,reqno,twoside,draft]{amsbook}
 \usepackage{amsbooka}
 \usepackage{fixltx2e}
@@ -35,7 +36,9 @@
   \usepackage{fancyhdr}
   \usepackage{showlabels}
 }{%
-  \usepackage[a4paper,rmargin=6cm]{geometry}
+  \if@twoside
+    \usepackage[a4paper,rmargin=6cm]{geometry}
+  \fi
 }
 
 \usepackage[natbib,style=alphabetic,maxbibnames=99]{biblatex}
