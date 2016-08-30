@@ -8,9 +8,9 @@
 %   http://creativecommons.org/licenses/by-sa/3.0/.
 %
 
-\documentclass[a4paper,titlepage,reqno,final,oneside]{amsbook}
+%\documentclass[a4paper,titlepage,reqno,final,oneside]{amsbook}
 %\documentclass[a4paper,titlepage,reqno,final,twoside]{amsbook}
-%\documentclass[a4paper,reqno,twoside,draft]{amsbook}
+\documentclass[reqno,twoside,draft]{amsbook}
 \usepackage{amsbooka}
 \usepackage{fixltx2e}
 \usepackage[utf8]{inputenc}
@@ -31,6 +31,8 @@
 \usepackage{ifdraft}
 \usepackage{asymptote}
 \usepackage{datetime}
+\usepackage{hhcount}
+\usepackage[binary-units]{siunitx}
 
 \ifdraft{%
   \usepackage{fancyhdr}
@@ -45,6 +47,9 @@
 \addbibresource{matematik-1.bib}
 %\addbibresource{krypto/introcrypt.bib}
 %\addbibresource{pwdanalysis/literature.bib}
+
+\usepackage{interval}
+\intervalconfig{soft open fences,scaled}
 
 \usepackage{amssymb}
 \usepackage{amsmath}
@@ -102,8 +107,7 @@
 \makeindex{}
 
 \includeonly{%
-  frontmatter,preface,intro,logik,mangder,%
-  naturliga,heltalen,talsystem,backmatter%
+  sannolikhet%
 }
 
 \begin{document}
@@ -198,8 +202,10 @@
   \singlespacing{}
 }{}
 \printbibliography{}
-\listoffigures
-\listoftables
+\ifdraft{}{%
+  \listoffigures
+  \listoftables
+}
 %\printnomenclature
 \printindex
 \include{backmatter}

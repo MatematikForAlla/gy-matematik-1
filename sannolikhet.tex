@@ -7,43 +7,397 @@
 %
 
 \chapter{Sannolikhetsteori}
-\label{ch:Sannolikhet}
+\label{Sannolikhet}
+% XXX Write introduction to probability theory chapter
+% This should provide a historical overview of area.
 \dots
 
-\begin{definition}[Utfall]
+
+\section{Utfall, händelser och sannolikhetsmått}
+
+\begin{definition}[Utfall]\label{Utfall}\index{utfall}
   Ett \emph{utfallsrum} är en uppräknelig icke-tom mängd.
   Elementen i utfallsrummet kallas \emph{utfall}.
   En \emph{händelse} är en delmängd till utfallsrummet.
 \end{definition}
 
-\begin{definition}[Sannolikhetsmått]
-  \dots
+Exempelvis, utfallsrummet för ett tärningskast skulle vara
+\begin{equation}\label{UtfallsrumTärningskast}
+  \Omega_T = \{\fcdice{1}, \fcdice{2}, \fcdice{3}, \fcdice{4}, \fcdice{5}, 
+  \fcdice{6}\},
+\end{equation}
+där varje tärningssymbol representerar att tärningen landar med den sidan upp.
+En händelse är enligt \cref{Utfall} en delmängd till \(\Omega_T\).
+Det vill säga mängden av händelser för utfallsrummet \(\Omega_T\) är 
+potensmängden \(\powerset(\Omega_T)\).
+Detta betyder som kanske väntat att \(\{\fcdice{1}\},\ldots,\{\fcdice{6}\}\) är 
+händelser.
+Det är kanske inte lika väntat att \(\emptyset\) och \(\{\fcdice{1}, \ldots, 
+  \fcdice{6}\}\) också är händelser.
+En händelse betyder alltså att något av utfallen sker, exempelvis för att vi 
+ska kunna uttrycka att \enquote{tärningen faller med en jämn sida upp} --- 
+vilket motsvaras av händelsen \(\{\fcdice{2}, \fcdice{4}, \fcdice{6}\}\), det 
+vill säga att något av utfallen sker.
+
+\begin{exercise}\label{NegationAvHändelse}
+  Utforska huruvida det går att uttrycka negationen av en händelse.
+  Exempelvis händelsen \enquote{slå en sexa} och dess negation \enquote{slå 
+    inte en sexa}, eller \enquote{slå ett jämnt tal} och dess negation 
+  \enquote{slå inte en jämnt tal}.
+  Skulle \enquote{slå ett udda tal} motsvara negationen av \enquote{slå ett 
+    jämnt tal}?
+\end{exercise}
+
+Vi vill nu fortsätta med att formalisera sannolikheter för att händelser 
+inträffar.
+
+\begin{definition}[Sannolikhetsmått]\label{Sannolikhetsmått}\index{sannolikhetsmått}
+  Låt \(\Omega\) vara ett utfallsrum.
+  Ett \emph{sannolikhetsmått över utfallsrummet \(\Omega\)} är en funktion 
+  \(\Pr\colon \Omega\to [0,1]\) som uppfyller följande:
+  \begin{enumerate}
+    \item \(\Pr[ \emptyset ] = 0\) och \(\Pr[ \Omega ] = 1\),
+    \item\label{SummeraSannolikhetsmatt} Om \(A\subseteq \Omega\) och 
+      \(B\subseteq \Omega\) båda är utfall och \(A\cap B = \emptyset\), då är 
+      \(\Pr[A\cup B] = \Pr[A] + \Pr[B]\).
+  \end{enumerate}
+\end{definition}
+Denna definition är, likt alla definitioner, av stor vikt.
+Vi kommer att bygga alla resultat i kapitlet på denna definition.
+Vi börjar med att se ett exempel på ett sannolikhetsmått.
+
+\begin{example}\label{ExempelTärningskast}
+  Låt \(\Omega_T\) vara utfallsrummet för ett tärningskast,  
+  \cref{UtfallsrumTärningskast}.
+  Hur bör vi definiera \(\Pr\colon \powerset(\Omega_T)\to \interval{0}{1}\)?
+  För att det ska avspegla vad vi avser med en riktig tärning bör 
+  \(\Pr[\{\fcdice{1}\}] = \cdots = \Pr[\{\fcdice{6}\}] = \frac{1}{6}\).
+\end{example}
+
+\begin{exercise}
+  Visa att \cref{ExempelTärningskast} uppfyller \cref{Sannolikhetsmått}.
+\end{exercise}
+
+\begin{exercise}
+  Låt \(\Omega_T\) och \(\Pr\) vara definierade som 
+  i \cref{ExempelTärningskast}.
+  Låt \(J\) vara händelsen att en tärning visar ett jämnt tal efter ett kast.
+  Sannolikheten att detta händer är \(\Pr[J] = \frac{3}{6}\), varför?
+\end{exercise}
+
+En kombination av utfallsrum och sannolikhetsmått, som vi har ovan, kallar vi 
+för ett sannolikhetsrum.
+
+\begin{definition}[Sannolikhetsrum]\label{Sannolikhetsrum}\index{sannolikhetsrum}
+  Om \(\Omega\) är ett utfallsrum och \(\Pr\colon \Omega\to \interval{0}{1}\) 
+  är ett sannolikhetsmått över
+  \(\Omega\), då kallar vi \((\Omega, \Pr)\) för ett \emph{sannolikhetsrum}.
 \end{definition}
 
-\begin{definition}[Sannolikhetsrum]
-  \dots
-\end{definition}
 
-\begin{theorem}[Sannolikhet för händelse och komplement]
-  \dots
+\section{Att kombinera händelser}
+
+Vi ska nu utforska några intressanta resultat om sannolikhetsrum generellt, det 
+vill säga vad våra definitioner ovan ger upphov till.
+Låt oss börja med ett lemma som följer direkt av \cref{Sannolikhetsmått}.
+
+Vi har ett sannolikhetsrum \((\Omega, \Pr)\) och är intresserade av \(\Pr[A]\), 
+där \(A\subset \Omega\).
+Ibland känner vi inte till exakt vad \(\Pr[A]\) är, men vi känner till 
+\(\Pr[B_1] = p_1, \dotsc, \Pr[B_n] = p_n\) för \(B_i\subset \Omega\), \(i = 1, 
+  \dotsc, n\).
+Om \(A = B_1\cup \dotsb\cup B_n\) och \(B_1\cap \dotsb\cap B_n = \emptyset\), 
+då kan vi enligt \cref{Sannolikhetsmått} beräkna \(\Pr[A] = p_1 + \dotsb 
+  + p_n\).
+Vi ska nu sammanfatta några sätt att beräkna sannolikheten för en händelse.
+
+\begin{lemma}[Sannolikheten för en händelse]\label{SannolikhetHändelse}
+  Låt \((\Omega, \Pr)\) vara ett sannolikhetsrum och \(A\subseteq \Omega\) en 
+  händelse.
+  Då kan vi beräkna \(\Pr[A]\) på följande sätt:
+  \begin{enumerate}
+    \item \(\Pr[A] = \sum_{a\in A} \Pr[\{a\}]\), det vill säga summan av alla 
+      utfall i händelsen;
+    \item \(\Pr[A] = \sum_{B\in C} \Pr[B]\), där \(\bigcup C = A\) och 
+      \(\bigcap C = \emptyset\).
+  \end{enumerate}
+\end{lemma}
+
+\begin{exercise}
+  Bevisa \cref{SannolikhetHändelse}.
+  (Det kan göras genom att använda \cref{Sannolikhetsmått} och induktion.)
+\end{exercise}
+
+\begin{exercise}
+  Utforska vilken typ av händelser vi kan uttrycka och beräkna sannolikheten 
+  för, och vad vi behöver för att kunna göra beräkningen.
+\end{exercise}
+
+Vi ska nu återkomma till en händelse och dess negation 
+(\cref{NegationAvHändelse}).
+Ibland händer det att vi är intresserade av negationen av en händelse, ofta 
+händer det också att det är enklare att uttrycka negationen av negationen av en
+händelse.
+Vi ska nu titta på hur vi kan använda detta för att beräkna sannolikheter.
+
+\begin{theorem}[Sannolikhet för händelse och 
+  komplement]\label{SannolikhetKomplement}
+  Låt \((\Omega, \Pr)\) vara ett sannolikhetsrum.
+  Låt \(A\subseteq \Omega\) vara en händelse och \(B = \Omega\setminus A\) dess 
+  komplement.
+  Då är \(\Pr[B] = 1 - \Pr[A]\).
 \end{theorem}
+
+\begin{proof}
+  \Cref{Sannolikhetsmått} sa att \(\Pr[\Omega] = 1\).
+  Men \(A\cup B = \Omega\), således måste \(\Pr[A\cup B] = 1\).
+  \Cref{Sannolikhetsmått} sa även att för \(A\subseteq \Omega\) och 
+  \(B\subseteq \Omega\) där \(A\cap B = \emptyset\), vilket är fallet för 
+  komplement, har vi att \(\Pr[A\cup B] = \Pr[A] + \Pr[B]\).
+  Alltså är även \(\Pr[A\cup B] = \Pr[A] + \Pr[B]\).
+  Följaktligen är \(\Pr[A] + \Pr[B] = 1\) vilket ger oss \(\Pr[B] 
+    = 1 - \Pr[A]\).
+\end{proof}
+
+\Cref{SannolikhetKomplement} är en väldigt användbar sats då den enkelt kan 
+användas för att negera händelser.
+Om vi har utfallsrummet \(\Omega\) och händelsen \(A\), då är komplementet till 
+\(A\), det vill säga \(B = \Omega\setminus A\), händelsen att \(A\) inte 
+inträffar.
+
+\begin{example}[Att inte slå en sexa]
+  Vi har utfallsrummet \(\Omega_T\) från \cref{UtfallsrumTärningskast}.
+  Låt \(A\) vara händelsen att vi slår en sexa, det vill säga \(A 
+    = \{\fcdice{6}\}\).
+  Om vi inte slår en sexa måste det betyda att vi slår någon av de andra 
+  sidorna, det vill säga \(B = \{\fcdice{1}, \fcdice{2}, \fcdice{3}, 
+    \fcdice{4}, \fcdice{5}\}\).
+  Vi kan se att \(B = \Omega\setminus A\).
+  Vi kan också se att \(\Pr[A] = \frac{1}{6}\).
+  Då återstår att se vad \(\Pr[B]\) är.
+  Det framgår från \cref{Sannolikhetsmått} att \(\Pr[B] = \Pr[\{\fcdice{1}\}] 
+    + \Pr[B\setminus \{\fcdice{1}\}]\).
+  \(\Pr[B\setminus \{\fcdice{1}\}]\) kan vi i sin tur dela upp som 
+  \(\Pr[B\setminus \{\fcdice{1}\}] = \Pr[\{\fcdice{2}\}] + \Pr[B\setminus 
+    \{\fcdice{1}, \fcdice{2}\}]\).
+  Fortsätter vi så får vi att \(\Pr[B] = \sum_{t\in B} \Pr[\{t\}] 
+    = \frac{5}{6}\).
+  Använder vi \cref{SannolikhetKomplement} får vi \(\Pr[B] = 1 - \Pr[A] 
+    = \frac{6}{6} - \frac{1}{6} = \frac{5}{6}\).
+\end{example}
+
+\begin{exercise}
+  I logiken har vi operationerna \(\lnot, \lor, \land\) (negation, disjunktion 
+  respektive konjunktion).
+  \Cref{SannolikhetKomplement} beskriver hur vi kan beräkna sannolikheten för 
+  negationen av en händelse.
+  Kan du finna motsvarigheterna för de andra operationerna (disjunktion och 
+  konjunktion)?
+\end{exercise}
+
+Vi har hittills sett att \(\Pr[A\cup B] = \Pr[A] + \Pr[B]\) förutsatt att 
+\(A\cap B = \emptyset\), vi ska försöka att eliminera kravet att \(A\cap
+  B =\emptyset\) i nästa avsnitt.
+Innan vi fortsätter dit ska vi dock titta på vad \(\Pr[A\cap B]\) skulle kunna 
+betyda.
 
 \begin{theorem}[Sannolikhet för två händelser]
-  \dots
+  \(\Pr[A, B] = \Pr[A]\cdot \Pr[B|A]\)
 \end{theorem}
 
-\begin{definition}[Parvis disjunkta händelser]
+\begin{proof}
   \dots
-\end{definition}
+\end{proof}
+
+% XXX Maybe move this to the chapter on set theory?
+%\begin{definition}[Parvis 
+%  disjunkta]\label{ParvisDisjunkta}\index{disjunkt!parvis}
+%  Låt \(M_1, \ldots, M_n\) vara \(n\in \N\) mängder.
+%  Vi säger att mängderna är \emph{parvis disjunkta} om \(m_i\cap m_j 
+%    = \emptyset\) för varje \(1\leq i, j\leq n\) med \(i\neq j\).
+%\end{definition}
+
+
+\section{Betingad sannolikhet}
+
+Oberoende och beroende händelser \dots
 
 \begin{definition}[Betingad sannolikhet]
-  \dots
+  \(\Pr[B|A] = \frac{\Pr[B\cap A]}{\Pr[A]}\)
 \end{definition}
 
 \begin{definition}[Oberoende händelser]
-  \dots
+  Låt \((\Omega, \Pr)\) vara ett sannolikhetsrum.
+  Två händelser \(A\subseteq \Omega\) och \(B\subseteq \Omega\) sägs vara 
+  \emph{oberoende} om \(\Pr[A\cap B] = \Pr[A]\cdot \Pr[B]\).
 \end{definition}
 
-\begin{theorem}[Bayes sats]
-  \dots
+% TRANSLATE and REWORK %%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\begin{example}
+  \begin{itemize}
+    \item We roll one die, \(\Omega_D = \{\fcdice{1}, \ldots, \fcdice{6}\}\).
+    \item Events: roll a one, \(A = \{\fcdice{1}\}\), and roll a six, \(B 
+        = \{\fcdice{6}\}\).
+
+    \item Clearly we cannot get \fcdice{1} and \fcdice{6} at the same time:
+      \[\Pr[A\cap B] = \Pr[\emptyset] = 0 \neq \Pr[A]\cdot \Pr[B].\]
+
+    \item But we can get either: \(\Pr[A\cup B] = \Pr[A] + \Pr[B] 
+        = \frac{2}{6}\).
+  \end{itemize}
+\end{example}
+
+\begin{example}
+  \begin{itemize}
+    \item We roll two dice: \(\Omega_{D2} = \{(\fcdice{1},\fcdice{1}), 
+        \ldots, (\fcdice{1}, \fcdice{6}), \ldots, (\fcdice{6}, \fcdice{1}), 
+        \ldots, (\fcdice{6}, \fcdice{6})\).
+
+    \item Roll a one: \(A = \{(\fcdice{1}, \fcdice{1}), \ldots, (\fcdice{1}, 
+        \fcdice{6}), (\fcdice{2}, \fcdice{1}), \ldots, (\fcdice{6}, 
+        \fcdice{1})\}\).
+
+    \item Roll a six: \(B = \{(\fcdice{6}, \fcdice{1}), \ldots, (\fcdice{6}, 
+        \fcdice{6}), (\fcdice{1}, \fcdice{6}), \ldots, (\fcdice{5}, 
+        \fcdice{6})\}\).
+
+    \item Roll a one and a six: \(\Pr[A\cap B] = \Pr[\{(\fcdice{1}, 
+        \fcdice{6}), (\fcdice{6}, \fcdice{1})\}] = \frac{2}{36} \neq 
+        \frac{1}{6}\cdot \frac{1}{6}\).
+
+    \item Roll a one or a six with two chances: \(\Pr[A\cup B]\).
+
+  \end{itemize}
+\end{example}
+
+\begin{example}
+  \begin{itemize}
+    \item We roll two dice: \(\Omega_{D2} = \{(\fcdice{1},\fcdice{1}), 
+        \ldots, (\fcdice{1}, \fcdice{6}), \ldots, (\fcdice{6}, \fcdice{1}), 
+        \ldots, (\fcdice{6}, \fcdice{6})\).
+
+    \item \emph{First} roll a one: \(A = \{(\fcdice{1}, \fcdice{1}), \ldots, 
+        (\fcdice{1}, \fcdice{6})\}\).
+
+    \item \emph{Second} roll a six: \(B = \{(\fcdice{1}, \fcdice{6}), \ldots, 
+        (\fcdice{6}, \fcdice{6})\}\).
+
+    \item First roll a one, then a six: \(\Pr[A\cap B] = \Pr[\{(\fcdice{1}, 
+        \fcdice{6})\}] = \frac{1}{36} = \frac{1}{6}\cdot \frac{1}{6}\).
+
+    \item Either roll a one first \emph{or} a six on the second: \(\Pr[A\cup 
+        B]\).
+
+  \end{itemize}
+\end{example}
+
+\begin{exercise}
+  Even if \(\Pr[A]\cdot \Pr[B] = \Pr[A\cap B]\) they are not necessarily 
+  independent, why?
+\end{exercise}
+
+\subsection{Conditional probability}
+
+\begin{definition}[Conditioned probability]
+  \begin{itemize}
+    \item Let \(A, B\) be events in probability space \((\Omega, \Pr)\).
+    \item The probability of \(B\) given \(A\) is defined as \(\Pr[B\mid A] 
+        = \frac{\Pr[B\cap A]}{\Pr[A]}\)
+  \end{itemize}
+\end{definition}
+
+\begin{example}
+  \begin{itemize}
+    \item Use probability space for rolling a die, \((\Omega_D, \Pr)\).
+    \item Event \(E = \{\fcdice{2}, \fcdice{4}, \fcdice{6}\}\) for even side 
+      up.
+
+    \item Let \(A = \{\fcdice{2}\}\) and \(B = \{\fcdice{3}\}\), then
+      \[\Pr[A\mid E] = \frac{\Pr[\{\fcdice{2}\}]}{\Pr[E]} = \frac{1}{3}
+        \text{ and }
+        \Pr[B\mid E] = \frac{\Pr[\emptyset]}{\Pr[E]} = 0.\]
+
+  \end{itemize}
+\end{example}
+
+\begin{theorem}[Joint probability]
+  \begin{itemize}
+    \item Let \(A, B\) be events in probability space \((\Omega, \Pr)\).
+    \item Then \(\Pr[A\cap B] = \Pr[A]\cdot \Pr[B\mid A]\)
+  \end{itemize}
 \end{theorem}
+
+\begin{exercise}
+  Using conditional probability we can show this new result, how?
+\end{exercise}
+%  \begin{proof}
+%    \begin{itemize}
+%      \item We know from definition: \(\Pr[B\mid A] = \frac{\Pr[A\cap 
+%            B]}{\Pr[A]}\).
+%
+%      \item Thus \(\Pr[B\mid A]\cdot \Pr[A] = \Pr[A\cap B]\).
+%    \end{itemize}
+%  \end{proof}
+
+\begin{theorem}[Bayes sats]
+  \begin{itemize}
+    \item Let \(A, B\) be events in probability space \((\Omega, \Pr)\).
+    \item Then \(
+        \Pr[A\mid B] = \frac{\Pr[B\mid A]\Pr[A]}{\Pr[B]}.
+      \)
+  \end{itemize}
+\end{theorem}
+
+\begin{proof}
+  \begin{itemize}
+    \item \(\Pr[A\mid B] = \frac{\Pr[A\cap B]}{\Pr[B]}\) and \(\Pr[B\mid A] 
+        = \frac{\Pr[A\cap B]}{\Pr[A]}\).
+
+    \item Thus \(\Pr[A\cap B] = \Pr[A\mid B] \Pr[B] = \Pr[B\mid A] \Pr[A]\).
+
+    \item Which means \(\Pr[A\mid B] = \frac{\Pr[B\mid A] \Pr[A]}{\Pr[B]}\).
+  \end{itemize}
+\end{proof}
+
+\begin{example}[An intrusion detection system]
+  \begin{itemize}
+    \item Our IDS is this good:
+      \begin{itemize}
+        \item It detects malicious traffic with \SI{99}{\percent} certainty 
+          (true positives).
+        \item It discards benign traffic with \SI{99}{\percent} certainty (true 
+          negatives).
+      \end{itemize}
+
+    \item \emph{Assume} \SI{0.5}{\percent} of \enquote{the traffic} consist of 
+      attacks.
+
+    \item Event \(M\) is malicious traffic, \(B\) is benign traffic.
+    \item Event \(+\) means IDS declared malicious, \(-\) declared benign.
+
+    \item Then we get \dots
+  \end{itemize}
+\end{example}
+
+\begin{example}[IDS continued]
+  \begin{align*}
+    \Pr[M\mid +] &= \frac{\Pr[+\mid M] \Pr[M]}{\Pr[+]}
+    = \frac{0.99\cdot 0.005}{\Pr[+]} \\
+    &= \frac{0.99\cdot 0.005}{\Pr[+\mid M] \Pr[M] + \Pr[+\mid B] \Pr[B]} 
+    \\
+    &= \frac{0.99\cdot 0.005}{0.99\cdot 0.005 + 0.01\cdot (1 - \Pr[M])} 
+    \\
+    &= \frac{0.99\cdot 0.005}{0.99\cdot 0.005 + 0.01\cdot 0.995} \\
+    &= 0.33
+  \end{align*}
+\end{example}
+
+\begin{exercise}
+  \begin{itemize}
+    \item What's a good-enough probability for \(\Pr[M\mid +]\)?
+    \item How do we achieve it?
+  \end{itemize}
+\end{exercise}
+
+
