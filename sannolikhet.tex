@@ -111,7 +111,7 @@ då kan vi enligt \cref{Sannolikhetsmått} beräkna \(\Pr[A] = p_1 + \dotsb
   + p_n\).
 Vi ska nu sammanfatta några sätt att beräkna sannolikheten för en händelse.
 
-\begin{lemma}[Sannolikheten för en händelse]\label{SannolikhetHändelse}
+\begin{lemma}[Sannolikheten för en händelse]\label{SummeraSannolikheter}
   Låt \((\Omega, \Pr)\) vara ett sannolikhetsrum och \(A\subseteq \Omega\) en 
   händelse.
   Då kan vi beräkna \(\Pr[A]\) på följande sätt:
@@ -124,7 +124,7 @@ Vi ska nu sammanfatta några sätt att beräkna sannolikheten för en händelse.
 \end{lemma}
 
 \begin{exercise}
-  Bevisa \cref{SannolikhetHändelse}.
+  Bevisa \cref{SummeraSannolikheter}.
   (Det kan göras genom att använda \cref{Sannolikhetsmått} och induktion.)
 \end{exercise}
 
@@ -197,16 +197,46 @@ inträffar.
 
 Vi har hittills sett att \(\Pr[A\cup B] = \Pr[A] + \Pr[B]\) förutsatt att 
 \(A\cap B = \emptyset\), vi ska försöka att eliminera kravet att \(A\cap
-  B =\emptyset\) i nästa avsnitt.
-Innan vi fortsätter dit ska vi dock titta på vad \(\Pr[A\cap B]\) skulle kunna 
-betyda.
+  B =\emptyset\).
+Anledningen till att vi kräver att \(A\cap B = \emptyset\) är för att 
+\(\Pr[A\cap B]\) räknas två gånger när vi tar \(\Pr[A] + \Pr[B]\): en gång 
+i \(\Pr[A]\) då \(A\cap B\subseteq A\) och ytterligare en gång i \(\Pr[B]\) då 
+\(A\cap B\subseteq B\).
+Vi kan därför formulera följande sats.
 
-\begin{theorem}[Sannolikhet för två händelser]
-  \(\Pr[A, B] = \Pr[A]\cdot \Pr[B|A]\)
+\begin{theorem}[Sannolikhet för disjunktion]
+  Låt \((\Omega, \Pr)\) vara ett sannolikhetsrum och \(A\subseteq \Omega\) och 
+  \(B\subseteq \Omega\) vara händelser.
+  Då har vi att \(\Pr[A\cup B] = \Pr[A] + \Pr[B] - \Pr[A\cap B]\).
 \end{theorem}
 
 \begin{proof}
-  \dots
+  Vi vet från \cref{SummeraSannolikheter} att \(\Pr[A\cup B] = \sum_{x\in A\cup
+      B} \Pr[\{x\}]\) och \(\Pr[A\cap B] = \sum_{y\in A\cap B} \Pr[\{y\}]\).
+  Vidare har vi att
+  \begin{align}
+    \label{PrA}
+    \Pr[A] &= \sum_{a\in A} \Pr[\{a\}]
+    = \Pr[A\setminus (A\cap B)] + \Pr[A\cap B] \\
+    \label{PrB}
+    \Pr[B] &= \sum_{b\in B} \Pr[\{b\}]
+    = \Pr[B\setminus (A\cap B)] + \Pr[A\cap B].
+  \end{align}
+  På samma sätt kan vi skriva om \(\Pr[A\cup B]\) som
+  \begin{equation}
+    \label{PrAcupB}
+    \Pr[A\cup B] = \Pr[A\setminus (A\cap B)]
+    + \Pr[A\cap B]
+    + \Pr[B\setminus (A\cap B)].
+  \end{equation}
+  Om vi kombinerar \cref{PrA,PrB,PrAcupB} får vi
+  \begin{multline}
+    \Pr[A] + \Pr[B] = \\
+    \Pr[A\setminus (A\cap B)] + \Pr[A\cap B]
+    + \Pr[B\setminus (A\cap B)] + \Pr[A\cap B] \\
+    = \Pr[A\cup B] + \Pr[A\cap B].
+  \end{multline}
+  Alltså har vi \(\Pr[A\cup B] = \Pr[A] + \Pr[B] - \Pr[A\cap B]\).
 \end{proof}
 
 % XXX Maybe move this to the chapter on set theory?
@@ -225,6 +255,14 @@ Oberoende och beroende händelser \dots
 \begin{definition}[Betingad sannolikhet]
   \(\Pr[B|A] = \frac{\Pr[B\cap A]}{\Pr[A]}\)
 \end{definition}
+
+\begin{theorem}[Sannolikhet för konjunktion]
+  \(\Pr[A\cap B] = \Pr[A]\cdot \Pr[B|A]\)
+\end{theorem}
+
+\begin{proof}
+  \dots
+\end{proof}
 
 \begin{definition}[Oberoende händelser]
   Låt \((\Omega, \Pr)\) vara ett sannolikhetsrum.
