@@ -12,11 +12,10 @@
 %\documentclass[a4paper,titlepage,reqno,final,twoside]{amsbook}
 \documentclass[reqno,twoside,draft]{amsbook}
 \usepackage{amsbooka}
-\usepackage{fixltx2e}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage[ibycus,german,english,swedish]{babel}
 \usepackage{xparse}
+\usepackage[ibycus,german,english,swedish]{babel}
 \usepackage{graphicx}
 \usepackage[hyphens]{url}
 \usepackage{lettrine}
@@ -28,13 +27,13 @@
 \usepackage{booktabs}
 \usepackage[multiple]{footmisc}
 \usepackage{verbatim}
-\usepackage{ifdraft}
 \usepackage{asymptote}
-\usepackage{datetime}
 \usepackage{hhcount}
 \usepackage[binary-units]{siunitx}
 
+\usepackage{ifdraft}
 \ifdraft{%
+  \usepackage{datetime}
   \usepackage{fancyhdr}
   \usepackage{showlabels}
 }{%
