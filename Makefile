@@ -7,7 +7,7 @@ all: matematik-1.pdf
 SRC=	matematik-1.tex frontmatter.tex backmatter.tex matematik-1.bib
 SRC+=	LICENSE preface.tex
 SRC+= 	intro.tex
-SRC+= 	logik.tex mangder.tex
+SRC+= 	logik.tex mangder.tex game-of-life.tex
 SRC+= 	naturliga.tex heltalen.tex talteori.tex
 SRC+= 	rationella.tex reella.tex talsystem.tex
 SRC+= 	ekvationer.tex olikheter.tex potensekvationer.tex
