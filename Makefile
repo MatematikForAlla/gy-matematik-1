@@ -4,8 +4,7 @@
 .PHONY: all
 all: matematik-1.pdf
 
-SRC=	matematik-1.tex frontmatter.tex backmatter.tex matematik-1.bib
-SRC+=	LICENSE preface.tex
+SRC+=	preface.tex
 SRC+= 	intro.tex
 SRC+= 	logik.tex mangder.tex
 SRC+= 	naturliga.tex heltalen.tex talteori.tex
@@ -16,6 +15,9 @@ SRC+= 	procent.tex forandring.tex
 SRC+= 	kombinatorik.tex sannolikhet.tex statistik.tex
 SRC+= 	kursplanering.tex
 
+matematik-1.pdf: matematik-1.tex frontmatter.tex backmatter.tex
+matematik-1.pdf: LICENSE
+matematik-1.pdf: matematik-1.bib
 matematik-1.pdf: ${SRC}
 
 clean:
