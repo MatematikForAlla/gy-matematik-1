@@ -4,8 +4,7 @@
 .PHONY: all
 all: matematik-1.pdf
 
-SRC=	matematik-1.tex frontmatter.tex backmatter.tex matematik-1.bib
-SRC+=	LICENSE preface.tex
+SRC+=	preface.tex
 SRC+= 	intro.tex
 SRC+= 	logik.tex mangder.tex
 SRC+= 	naturliga.tex heltalen.tex talteori.tex
@@ -16,23 +15,28 @@ SRC+= 	procent.tex forandring.tex
 SRC+= 	kombinatorik.tex sannolikhet.tex statistik.tex
 SRC+= 	kursplanering.tex
 
+matematik-1.pdf: matematik-1.tex frontmatter.tex backmatter.tex
+matematik-1.pdf: LICENSE
+matematik-1.pdf: matematik-1.bib
 matematik-1.pdf: ${SRC}
-matematik-1.pdf: hhcount.sty
+matematik-1.pdf: hhcount.sty hhutils0.sty
 
-hhcount.sty: hhutils0.sty
+hhcount.sty:
 	wget -O $@ http://mirrors.ctan.org/usergrps/uktug/baskervi/5_5/hhcount.sty
 
 hhutils0.sty:
 	wget -O $@ http://mirrors.ctan.org/usergrps/uktug/baskervi/5_5/hhutils0.sty
 
-.PHONY:
+
+.PHONY: clean
 clean:
 	${RM} figs/*-converted-to.pdf
 	${RM} matematik-1-1.asy matematik-1-1.pdf matematik-1.pre
 
-.PHONY: clean-depends
-clean-depends:
-	${RM} hhcount.sty hhutils0.sty
+
+.PHONY: wc
+wc: ${SRC}
+
 
 ### INCLUDES ###
 
