@@ -20,9 +20,15 @@ matematik-1.pdf: LICENSE
 matematik-1.pdf: matematik-1.bib
 matematik-1.pdf: ${SRC}
 
+
+.PHONY: clean
 clean:
 	${RM} figs/*-converted-to.pdf
 	${RM} matematik-1-1.asy matematik-1-1.pdf matematik-1.pre
+
+
+.PHONY: wc
+wc: ${SRC}
 
 
 ### INCLUDES ###
