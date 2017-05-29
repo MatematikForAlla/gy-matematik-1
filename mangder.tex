@@ -138,7 +138,7 @@ En sådan illustration kallas för Venndiagram, namngivet efter den brittiske
 logikern och filosofen John Venn (1834--1923).
 Ett exempel på Venndiagram med två mängder kan ses i \cref{fig:Disjunkt}.
 \begin{figure}
-  \includegraphics[width=4cm]{figs/disjoint.pdf}
+  \includegraphics[width=0.3\textwidth]{figs/disjoint.pdf}
   \caption{%
     Två mängder.
     Bild:~\cite{Wikipedia2013Set}.
@@ -184,7 +184,7 @@ Vi fortsätter med ett annat viktigt begrepp, disjunktionen.
 Mängderna i \cref{fig:Disjunkt} är disjunkta medan mängderna 
 i \cref{fig:IckeDisjunkt} inte är det.
 \begin{figure}
-  \includegraphics[width=4cm]{figs/union.pdf}
+  \includegraphics[width=0.3\textwidth]{figs/union.pdf}
   \caption{%
     Två icke disjunkta mängder.
     Bild:~\cite{Wikipedia2013Set}.
@@ -211,9 +211,20 @@ Detta illustreras med ett Venndiagram i \cref{fig:Union}.
 \begin{figure}
   % XXX typeset set union figure with tex
   % XXX use eps format for figure
-  \subfloat[Mängden \(A\).]{\includegraphics[width=4cm]{figs/A.pdf}}
-  \subfloat[Mängden \(B\).]{\includegraphics[width=4cm]{figs/B.pdf}}
-  \subfloat[Mängden \(A\cup B\).]{\includegraphics[width=4cm]{figs/union.pdf}}
+  \begin{minipage}{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figs/A.pdf}
+    \subcaption{Mängden \(A\).}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figs/B.pdf}
+    \subcaption{Mängden \(B\).}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figs/union.pdf}
+    \subcaption{Mängden \(A\cup B\).}
+  \end{minipage}
   \caption{%
     Unionen av två mängder.
     Bild:~\cite{Wikipedia2013Set}.
@@ -234,9 +245,20 @@ Begreppet snitt illustreras med ett Venndiagram i \cref{fig:Snitt}.
 \begin{figure}
   % XXX typeset set intersection figure with tex
   % XXX use eps format for figure
-  \subfloat[Mängden \(A\).]{\includegraphics[width=4cm]{figs/A.pdf}}
-  \subfloat[Mängden \(B\).]{\includegraphics[width=4cm]{figs/B.pdf}}
-  \subfloat[Mängden \(A\cap B\).]{\includegraphics[width=4cm]{figs/intersection.pdf}}
+  \begin{minipage}{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figs/A.pdf}
+    \subcaption{Mängden \(A\).}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figs/B.pdf}
+    \subcaption{Mängden \(B\).}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figs/intersection.pdf}
+    \subcaption{Mängden \(A\cap B\).}
+  \end{minipage}
   \caption{%
     Snittet av två mängder.
     Bild:~\cite{Wikipedia2013Set}.
@@ -264,9 +286,20 @@ ges i \cref{fig:Differens}.
 \begin{figure}
   % XXX typeset set difference figure with tex
   % XXX use eps format for figure
-  \subfloat[Mängden \(A\).]{\includegraphics[width=4cm]{figs/A.pdf}}
-  \subfloat[Mängden \(B\).]{\includegraphics[width=4cm]{figs/B.pdf}}
-  \subfloat[Mängden \(A\setminus B\).]{\includegraphics[width=4cm]{figs/A_setminus_B.pdf}}
+  \begin{minipage}{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figs/A.pdf}
+    \subcaption{Mängden \(A\).}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figs/B.pdf}
+    \subcaption{Mängden \(B\).}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figs/A_setminus_B.pdf}
+    \subcaption{Mängden \(A\setminus B\).}
+  \end{minipage}
   \caption{%
     Differensen av två mängder.
     Bild:~\cite{Wikipedia2013Set}.
@@ -334,7 +367,7 @@ I \cref{fig:Delmangd} illustreras begreppet genom ett Venndiagram.
 \begin{figure}
   % XXX typeset set complement figure with tex
   % XXX use eps format for figure
-  \includegraphics[width=4cm]{figs/subset.pdf}
+  \includegraphics[width=0.3\textwidth]{figs/subset.pdf}
   \caption{%
     Två mängder, där den ena är inkluderad av den andre.
     Bild:~\cite{Wikipedia2013Set}.
@@ -359,7 +392,7 @@ Begreppet illustreras med ett Venndiagram i \cref{fig:Komplement}.
 \begin{figure}
   % XXX typeset set complement figure with tex
   % XXX use eps format for figure
-  \includegraphics[width=4cm]{figs/complement.pdf}
+  \includegraphics[width=0.3\textwidth]{figs/complement.pdf}
   \caption{%
     Komplementet till en delmängd.
     Bild:~\cite{Wikipedia2013Set}.
@@ -608,12 +641,33 @@ Vi vill kunna beskriva en funktion som avbildar element på ett särskilt vis.
 En annan injektion illustreras i \cref{fig:Injektion}.
 \begin{figure}
   % XXX typeset injection figure with tex
-  \includegraphics[width=4cm]{figs/injection.eps}
+  \begin{minipage}{0.3\textwidth}
+    \includegraphics[width=\textwidth]{figs/injection.eps}
+    \subcaption{%
+      Injektion.
+    }\label{fig:Injektion}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.3\textwidth}
+    % XXX typeset surjection figure with tex
+    \includegraphics[width=\textwidth]{figs/surjection.eps}
+    \subcaption{%
+      Surjektion.
+    }\label{fig:Surjektion}
+  \end{minipage}
+  \hfill
+  \begin{minipage}{0.3\textwidth}
+    % XXX typeset bijection figure with tex
+    \includegraphics[width=\textwidth]{figs/bijection.eps}
+    \subcaption{%
+      Bijektion.
+    }\label{fig:Bijektion}
+  \end{minipage}
   \caption{%
-    En injektiv funktion från en mängd \(X=\{1,2,3\}\) till en mängd
-    \(Y=\{A,B,C,D\}\).
-    Bild:~\cite{Wikipedia2013Injection}.
-  }\label{fig:Injektion}
+    Exempel på funktioner som är injektiv, surjektiv respektive bijektiv 
+    (injektiv och surjektiv).
+    Bilder:~\cite{Wikipedia2013Injection}.
+  }
 \end{figure}
 
 Vi ska införa en till egenskap likt den ovan.
@@ -634,15 +688,6 @@ Vi ska införa en till egenskap likt den ovan.
 \end{example}
 
 I \cref{fig:Surjektion} illustreras ytterligare en surjektion.
-\begin{figure}
-  % XXX typeset surjection figure with tex
-  \includegraphics[width=4cm]{figs/surjection.eps}
-  \caption{%
-    En surjektiv funktion från en mängd \(X=\{1,2,3,4\}\) till en
-    mängd \(Y=\{B,C,D\}\).
-    Bild:~\cite{Wikipedia2013Injection}.
-  }\label{fig:Surjektion}
-\end{figure}
 
 \begin{definition}
   En avbildning som är både injektiv och surjektiv sägs vara
@@ -654,16 +699,6 @@ I \cref{fig:Surjektion} illustreras ytterligare en surjektion.
 \end{exercise}
 
 En bijektiv funktion illustreras i \cref{fig:Bijektion}.
-\begin{figure}
-  % XXX typeset bijection figure with tex
-  \includegraphics[width=4cm]{figs/bijection.eps}
-  \caption{%
-    En bijektiv funktion från en mängd \(X=\{1,2,3,4\}\) till en
-    mängd \(Y=\{A,B,C,D\}\).
-    Bild:~\cite{Wikipedia2013Injection}.
-  }\label{fig:Bijektion}
-\end{figure}
-
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 % KARDINALITET
