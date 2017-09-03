@@ -156,11 +156,6 @@ style=definition
 
 \makeindex{}
 
-\includeonly{%
-  frontmatter,preface,intro,logik,mangder,%
-  naturliga,heltalen,talsystem,backmatter%
-}
-
 \begin{document}
 \ifdraft{%
   \fancypagestyle{plain}{%
@@ -199,13 +194,16 @@ style=definition
 \ifdraft{%
   \onehalfspacing{}
 }{}
+
 % main chapters
 \include{intro}
+
 \ifdraft{}{%
   \part{Den matematiska grunden}
 }
 \include{logik}
 \include{mangder}
+
 \ifdraft{}{%
   \part{Tal och aritmetik}
 }
@@ -215,38 +213,42 @@ style=definition
 \include{rationella}
 \include{reella}
 \include{talsystem}
-\ifdraft{}{%
-  \part{Ekvationer}
-}
-\include{ekvationer}
-\include{olikheter}
-\include{potensekvationer}
-\ifdraft{}{%
-  \part{Geometri}
-}
-\include{geometri}
-\include{trigonometri}
-\include{linjalg}
-\ifdraft{}{%
-  \part{Samband och förändring}
-}
-\include{procent}
-\include{forandring}
-\ifdraft{}{%
-  \part{Kombinatorik, sannolikhet och statistik}
-}
-\include{kombinatorik}
-%\include{pwdanalysis/pwdinclude}
-\include{sannolikhet}
-\include{statistik}
-%\include{krypto/krypto}
+
+%\ifdraft{}{%
+%  \part{Ekvationer}
+%}
+%\include{ekvationer}
+%\include{olikheter}
+%\include{potensekvationer}
+%
+%\ifdraft{}{%
+%  \part{Geometri}
+%}
+%\include{geometri}
+%\include{trigonometri}
+%\include{linjalg}
+%
+%\ifdraft{}{%
+%  \part{Samband och förändring}
+%}
+%\include{procent}
+%\include{forandring}
+%
+%\ifdraft{}{%
+%  \part{Kombinatorik, sannolikhet och statistik}
+%}
+%\include{kombinatorik}
+%%\include{pwdanalysis/pwdinclude}
+%\include{sannolikhet}
+%\include{statistik}
+%%\include{krypto/krypto}
 
 % appendices
 \appendix
 \ifdraft{%
   \doublespacing{}
 }{}
-\include{kursplanering}
+%\include{kursplanering}
 
 \backmatter{}
 \ifdraft{%
