@@ -60,35 +60,61 @@ objektet också vara av den typen eller ha den egenskapen.
   Vi använder följande definition: en \emph{cykel} har åtminstone ett hjul och 
   vevarmar med pedaler som används för att driva hjulen och ge cykeln fart.
 
-  Om vi tittar på fordonet i \cref{fig:cykel} ser vi att det har 
-  åtminstone ett hjul (det har två), det har vevaxlar med pedaler som används 
-  för att driva hjulen och således ge fordonet fart.
-  Alltså måste det enligt vår definition vara en cykel.
+  Om vi tittar på fordonen i \cref{fig:cykel} ser vi att de har åtminstone ett 
+  hjul --- \cref{fig:Enhjuling} har ett hjul medan  
+  \cref{fig:ModernCykel,GammalCykel} har två --- det har vevaxlar med pedaler 
+  som används för att driva hjulen och således ge fordonet fart.
+  Alltså måste de enligt vår definition vara cyklar.
 \end{example}
 \begin{figure}
   % XXX create figs/cykel.eps
-  \includegraphics[width=0.7\textwidth]{figs/cykel.eps}
-  \caption{En illustration av en cykel.}\label{fig:cykel}
+  \begin{subfigure}[t]{0.30\linewidth}
+    \includegraphics[width=\linewidth]{figs/cykel-FlyingPigeon.jpg}
+    \caption{%
+      En modern cykel.
+    }\label{fig:ModernCykel}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.30\linewidth}
+    \includegraphics[width=\linewidth]{figs/cykel-Michaux.jpg}
+    \caption{%
+      En cyklist på en Michaux-velociped (1868).
+    }\label{fig:GammalCykel}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}[t]{0.30\linewidth}
+    \includegraphics[width=\linewidth]{figs/cykel-monocycle.jpg}
+    \caption{%
+      En enhjuling.
+    }\label{fig:Enhjuling}
+  \end{subfigure}
+  \caption{%
+    Exempel som uppfyller definitionen av en cykel.
+    Bilder: Wikipedia/bicycle och monocycle.
+  }\label{fig:cykel}
 \end{figure}
 
 \begin{example}\label{ex:bil}
   Vi använder samma definition som i \cref{ex:cykel}.
-  Om vi tittat på fordonet i figur \cref{fig:sparkcykel} ser vi att det 
-  har åtminstone ett hjul.
+  Om vi tittat på fordonet i figur \cref{fig:sparkcykel} ser vi att det har 
+  åtminstone ett hjul (det har två).
   Det saknas dock vevarmar för att driva hjulen.
   Vi kan således konstatera att en sparkcykel enligt definitionen i 
   \cref{ex:cykel} inte är en cykel.
 \end{example}
 \begin{figure}
   % XXX create figs/sparkcykel.eps
-  \includegraphics[width=0.7\textwidth]{figs/sparkcykel.eps}
-  \caption{En illustration av en sparkcykel.}\label{fig:sparkcykel}
+  \includegraphics[width=0.49\linewidth]{figs/cykel-sparkcykel.jpg}
+  \caption{%
+    En illustration av en sparkcykel.
+    Bild: Wikipedia/Kick scooter.
+  }\label{fig:sparkcykel}
 \end{figure}
 
 Med denna typ av definitioner kan vi veta exakt, vi kan bevisa att ett objekt 
 är av en specifik typ --- likt vi gjorde i exemplen ovan.
-Vi kan också göra det omvända, om ett objekt är av denna typen uppfyller det de
-givna reglerna.
+Vi kan också göra det omvända: om ett objekt är av en given typ, då uppfyller 
+det de givna reglerna.
 Exempelvis, om någon säger att de har en cykel, då måste den ha åtminstone ett 
 hjul och vevarmar med pedaler som driver den framåt.
 När vi bevisar saker kan vi alltså utgå från enbart dessa regler, det är detta 
@@ -111,19 +137,21 @@ objekt vi samtalar om, exempelvis \enquote{den svarta bilen närmast hitåt}
 eller \enquote{korsningen närmast skolan}.
 Vi använder dessa beskrivningar utan större ansträngning.
 Ibland blir det dock fel, vi har säkert alla hamnat i en situation som krävt 
-uttrycket \enquote{jaha, du menar den, jag trodde att du menade något helt 
-annat}.
+uttrycket \enquote{jaha, du menar så, jag trodde att du menade något helt 
+  annat}.
 Då måste vi förbättra noggrannheten i våra beskrivningar av objekten för att 
 bli förstådda utan vidare missförstånd.
 
 Vi kan också prata om klasser av objekt, exempelvis träd.
+Vi pratar då inte enbart om ett enskilt träd, utan alla träd gemensamt.
 De flesta har säkert stött på uttrycken \enquote{en björk har löv} eller 
 \enquote{björkar har löv}, \enquote{en tall har barr} eller \enquote{tallar har 
 barr}.
 Det är för de flesta självklart vad som menas med en björk, att det är ett träd 
 av släktet björk (\emph{betula}).
-Den specifika arten spelar ingen roll, exempelvis hängbjörk (\emph{betula 
-pendula}) och dvärgbjörk (\emph{betula nana}) är båda björkar.
+Det specifika trädet spelar ingen roll, vi pratar om alla träd som är björkar.
+Den specifika arten spelar heller ingen roll, exempelvis både hängbjörk 
+(\emph{betula pendula}) och dvärgbjörk (\emph{betula nana}) är björkar.
 Uttryckssättet brukar användas i meningar som \enquote{en björk har vit-svart 
 stam} eller \enquote{björkar har vit-svarta stammar}.
 
@@ -135,7 +163,7 @@ stam} eller \enquote{björkar har vit-svarta stammar}.
 Matematiken är inte särskilt mycket konstigare än vanligt språk.
 Ett av matematikens främsta verktyg är just språket, utan det skulle vi inte 
 kunna uttrycka våra tankar på ett effektivt sätt.
-Ett annat ovärderligt verktyg är pennan med tillhörande papper.
+Ett annat ovärderligt verktyg är en penna med tillhörande papper.
 Detta hjälper oss dels att spara våra tankar, men framförallt att strukturera 
 dem.
 
@@ -143,8 +171,9 @@ Säg nu att vi vill diskutera olika exotiska blommor som finns hos en
 blomsterhandlare.
 Då vi själva inte är experter på exotiska blommor vet vi inte namnet på dem, så 
 vi kan inte använda namnen för att diskutera dem.
-Ibland kanske vi släktets namn, exempelvis orkidé (\emph{orchidaceae}), men det 
-finns så många olika orkidéer att detta inte alltid hjälper.
+Ibland kanske vi känner till släktets namn, exempelvis orkidé 
+(\emph{orchidaceae}), men det finns så många olika orkidéer att detta inte 
+alltid hjälper.
 Om alla blommor är av olika färg skulle vi kunna använda färgen för att 
 identifiera de olika blommorna, exempelvis \enquote{jag tycker bäst om den 
 gröna blomman}.
@@ -172,7 +201,8 @@ Vi kan därför använda symboler som vi redan har namn på, och som vi kan skri
 väldigt effektivt: vårt alfabet.
 Låt den första blomman vara \(a\), den andra \(b\), och så vidare.
 Då finns det ingen risk att vi blandar ihop antalet med sorten likt ovan, vi 
-kan skriva exempelvis \(2c\) och vet exakt vad vi menar.
+kan skriva exempelvis \(2c\) och vet exakt vad vi menar (vi vill ha två av 
+blomma \(c\)).
 
 Detta är bakgrunden till den matematiska notationen med bokstäver.
 Det är således inget märkligt med den matematiska notationen som skrämt så 
@@ -224,8 +254,8 @@ En sammanfattning av detta finns i \cref{tbl:greekalpha}.
 
 Oftast brukar bokstäverna väljas så att de underlättar för minnet, exempelvis 
 \(b\) för blomma och \(k\) för kruka.
-Sedan kan man använda subskript, exempelvis kan vi beteckna de olika blommorna 
-ovan som \(b_1, b_2\) och så vidare.
+Sedan kan man använda index (även kallat subskript), exempelvis kan vi beteckna 
+de olika blommorna ovan som \(b_1, b_2\) och så vidare.
 Då kan vi skilja blommorna från krukorna, som vi kan benämna \(k_1, k_2\) och 
 så vidare.
 
@@ -246,11 +276,11 @@ så vidare.
 %     banken via internet.
 % - Demokratiskt organiserad. Alla kan bidra, ex. Fermat var advokat.
 Som antyddes ovan, kan matematiken beskrivas som studiet av abstrakta 
-konstruktioner.
+konstruktioner --- även om dessa ibland är väldigt lika verkligheten.
 Med abstrakta konstruktioner menar vi saker som endast finns i våra tankar, 
 eller vad Platon (cirka 428--348 f.v.t.) kallade \enquote{idévärlden}.
-Vi sätter upp axiomen och definitionerna, vilka vi skulle kunna kalla våra 
-spelregler, och undersöker sedan vad dessa spelregler ger upphov till.
+Vi sätter upp definitionerna, vilka vi skulle kunna kalla våra spelregler, och 
+undersöker sedan vad dessa spelregler ger upphov till.
 
 Historiskt har matematiken ofta varit sammankopplad med studiet av
 verkligheten.
@@ -258,21 +288,26 @@ Vi har kunnat studera verkligheten med hjälp av matematiken genom att våra
 grundregler varit grundläggande principer för verkligheten\footnote{%
   Se exempelvis Euklides postulat för geometrin i \cref{ch:Geometri} eller~\cite[kap.\ 4]{Kline1990mtf1}.
 }.
-Men trots detta är matematiken skild från verkligheten.
-De axiom vi utgår ifrån behöver inte vara principer från verkligheten.
+Men trots detta är matematiken skild från verkligheten, vi studerar enbart 
+modeller av verkligheten.
+Exempelvis definitionen av en cykel ovan är en abstrakt modell av vad en cykel 
+faktiskt är i verkligheten.
+
+De definitioner vi utgår ifrån behöver inte nödvändigtvis vara principer från 
+verkligheten.
 Det finns matematiska konstruktioner som kan te sig så verklighetsfrånkopplade
 att icke-matematiker ifrågasätter varför de studeras, och detta för oss in på
 ett viktigt konstaterande:
-Matematiken har inte alltid studerats enbart för att kunna dra slutsatser om
+matematiken har inte alltid studerats enbart för att kunna dra slutsatser om
 verkligheten.
 Många matematiker genom historien studerade matematiken enbart för den rena
 matematikens skull --- för att den var vacker, inte för att den gick att
 tillämpa på verkligheten.
-De ville utforska den värld som spänns upp av axiomen.
+De ville utforska den värld som spänns upp av definitionerna.
 Exempel på sådana är Pierre de Fermat (cirka 1607--1650) som är upphovsman till 
 den kända \emph{Fermats stora sats}.
 Han var advokat och amatörmatematiker.
-Fermats stora sats eller \emph{Fermats sista sats} säger att ekvationen
+Fermats stora sats (även kallad \emph{Fermats sista sats}) säger att ekvationen
 \(x^n+y^n=z^n\), där \(x,y\) och \(z\) är heltal, saknar lösningar för heltal
 \(n\) som är större än två.
 Fermat lämnade en anteckning i marginalen av sin kopia av Diophantus (omkring 
@@ -282,25 +317,32 @@ Det tog matematiker ända fram till år 1994 att bevisa satsen, så möjligen
 hade Fermat inte ett korrekt bevis då beviset som togs fram inryms på tusentals 
 sidor och krävde hundratals år av matematisk utveckling.
 Han hade däremot ett korrekt bevis för sin \emph{lilla sats} som säger att om
-\(p\) är ett primtal, då ger \(a^{p-1}\) alltid resten \(1\) vid division med
-\(p\).
-(Detta tas upp i \cref{ch:Talteori}.)
+\(p\) är ett primtal\footnote{%
+  Det vill säga ett tal som endast kan delas jämnt av sig självt och \(1\).
+  Exempelvis \(2, 3, 5, 7, 11\) är de fem första primtalen.
+}, då ger \(a^{p-1}\) alltid resten \(1\) vid heltalsdivision\footnote{%
+  Exempelvis om vi delar \(2\) med \(3\) går det noll gånger och vi får resten 
+  två.
+  Om vi delar \(5\) med \(3\) går det en gång (två treor ger sex) och vi får 
+  resten två, \(5 = 1\cdot 3 + 2\).
+} med \(p\).
+(Detta diskuteras mer i detalj i \cref{ch:Talteori}.)
 Leonard Euler (1707--1783) generaliserade Fermats lilla sats till att gälla även
 sammansatta tal, och denna generalisering är känd som \emph{Eulers sats} eller 
 ibland \emph{Fermat--Eulers sats}.
 Resultaten för dessa hade inget tillämpningsvärde för tiden, utan drivkraften
 var att utforska matematikens vackra värld och finna vackra resultat som dessa.
-År 1978 publicerades dock en tillämpning av satsen.
+Det var först 1978 som en tillämpning av satsen publicerades~\cite{RSA1978}.
 Det var Ronald Rivest (1947--), Adi Shamir (1952--) och Leonard Adleman 
 (1945--) som då publicerade ett kryptosystem sedermera känt som RSA\@.
 RSA-systemet bygger på Eulers sats och systemet ligger till grund för
 mycket av den säkra kommunikationen som sker på internet idag.
 Det dröjde alltså cirka 300 år innan någon fann en tillämpning, innan dess var 
-det vara ett vackert resultat.
+det bara ett vackert resultat.
 
 Detta visar även vikten av den så kallade grundforskningen, den forskning som 
 inte har någon omedelbar tillämplighet, utan enbart syftar till att fördjupa 
-mänsklighetens kunskap inom området.
+mänsklighetens kunskap inom olika områden.
 Detta är inte viktigt bara för matematiken utan för alla vetenskaper.
 För vi kan ställa oss frågan: hade vi hade haft säker kommunikation på internet
 idag om vi bara utforskat det som verkat direkt tillämpbart?
