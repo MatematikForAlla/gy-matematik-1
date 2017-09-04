@@ -1,4 +1,4 @@
-\chapter{Talteori}
+\chapter{Talteori}%
 \label{ch:Talteori}%\nocite{Laksov2005kou,Bartle2000itr}
 \lettrine{T}{alteori är studiet} av talen, primärt de hela talen.
 Ett exempel på ett mycket enkelt talteoretiskt fynd är att vartannt tal är 
@@ -162,10 +162,29 @@ redan i årskurs 1--3 i grundskolan.
   För varje heltal \(a\) finns unika heltal \(q\) och \(r\) sådana att \[a = qb 
   + r,\] där \(0\leq r < b\).
 \end{theorem}
-\begin{proof}
-  Eftersom att intervallena \[ [xb, (x+1)b) = \{y\in\Z \colon xb\leq y < (x 
-  + 1)b\} \] för \(x\in\Z\) är disjunkta och deras union utgör hela \(\Z\) 
-  måste det finnas ett heltal \(q\) sådant att \(qb\leq a < (q+1)b\).
+
+Innan vi bevisar att algoritmen är korrekt är det lämpligt att vi bevisar ett 
+antal lemman.
+
+\begin{lemma}\label{lem:DisjunktaIntervallAvZ}
+  Låt \( i_x = \{y\in\Z \colon xb\leq y < (x + 1)b\} \) beteckna ett intervall 
+  för varje \(x\in\Z\).
+  Då är \(i_x\) och \(i_{x'}\) disjunkta, det vill säga \(i_x\cap \i_{x'} = 
+    \emptyset\).
+  Deras union \(\cup_{x\in \Z} i_x = \Z\) utgör hela \(\Z\).
+\end{lemma}
+\begin{exercise}
+  Bevisa ovanstående lemma.
+  Arbeta med de två delarna var för sig: bevisa att intervallerna är disjunkta 
+  och bevisa att unionen utgör hela \(\Z\).
+\end{exercise}
+
+\begin{proof}[Bevis för divisionsalgoritmen]
+  Eftersom att intervallerna \[
+    i_x = \{y\in\Z \colon xb\leq y < (x + 1)b\}
+  \] för alla \(x\in\Z\) är disjunkta och deras union \(\cup_{x\in \Z} i_x = 
+    \Z\) utgör hela \(\Z\) (\cref{lem:DisjunktaIntervallAvZ}) måste det finnas 
+  ett heltal \(q\) sådant att \(qb\leq a < (q+1)b\).
   Låt \(r = a - qb\), då får vi från \(qb\leq a < (q + 1)b\) att \[ r = a - qb 
   < (q + 1)b - qb = b.\]
 
@@ -220,8 +239,8 @@ Följande sats, aritmetikens fundamentalsats, visades i princip av Euklides.
 I den sjunde boken av hans \emph{Elementa} finns två satser som tillsammans
 kan visa aritmetikens fundamentalsats.
 Den visades dock först i sin helhet av Carl Friedrich Gauss (1777--1855) i sin
-bok tillika doktorsavhandling \emph{Disquisitiones Arithmeticae} 
-\cite{Kline1990mtf3}, som är latin för \emph{utforskning av
+bok tillika doktorsavhandling \emph{Disquisitiones 
+  Arithmeticae}~\cite{Kline1990mtf3}, som är latin för \emph{utforskning av
 tal}.
 Gauss skrev boken 1798 när han var 20 år gammal och den publicerades 1801.
 Den handlar om talteori och sammanfattar tidigare resultat, men introducerar
@@ -233,10 +252,22 @@ Aritmetikens fundamentalsats var ett av dessa nya resultat.
   Ett heltal \(n\in\Z\) kan skrivas som en unik produkt av primtal och \(1\)
   eller \(-1\).
 \end{theorem}
-\begin{proof}
-  % XXX Komplettera med bevis för Aritmetikens fundamentalsats
-  \dots
-\end{proof}
+%\begin{proof}
+%  % XXX Komplettera med bevis för Aritmetikens fundamentalsats
+%  \dots
+%\end{proof}
+\begin{exercise}
+  Beviset kan delas upp i två delar.
+  Bevisa först att varje tal antingen är ett primtal eller kan skrivas som en 
+  produkt av primtal.
+  Detta görs enklast med ett induktionsbevis.
+  Bevisa därefter att om ett tal kan skrivas som en produkt av primtal, då är 
+  den produkten unik sånär som på ordningen av faktorerna\footnote{%
+    Det vill säga \(a\cdot b\) och \(b\cdot a\) räknas som samma produkt.
+  }.
+  Antag att \(p_1p_2\dotsb p_m = q_1q_2\dotsb q_n\), bevisa att \(m = n\) och 
+  att varje \(p_i\) motsvarar ett \(q_j\).
+\end{exercise}
 
 Följande sats har varit känd under väldigt lång tid, den är idag känd som
 Euklides sats.
@@ -248,8 +279,8 @@ i matematik ända fram till 1900-talet.
   Det finns oändligt många primtal.
 \end{theorem}
 \begin{proof}
-  Om vi antar att det finns ändligt många primtal, då kan vi anta att \(P 
-  = \{p_1, p_2, \ldots, p_n\}\) är mängden av alla primtal.
+  Vi antar att det finns ändligt många primtal, då kan vi beteckna mängden av 
+  alla primtal som \(P = \{p_1, p_2, \dotsc, p_n\}\).
   Vi tittar på ett heltal \(m\).
   Enligt aritmetikens fundamentalsats, 
   \cref{thm:AritmetikensFundamentalsats}, kan vi välja detta \(m\) sådant 
@@ -309,6 +340,7 @@ i matematik ända fram till 1900-talet.
 
 
 \section{Stora problem inom talteorin}
+
 Fermats stora sats, eller Fermats förmodan, ställde Fermat upp år 1637.
 Han påstod sig ha ett elegant bevis, men att detta inte rymdes i marginalen där 
 han skrev kommentaren.
@@ -383,7 +415,6 @@ Följande två hypoteser är fortfarande varken bevisade eller motbevisade.
   Det finns oändligt många perfekta tal.
 \end{conjecture}
 
-För vidare fördjupning inom området talteori rekommenderas Laksovs \emph{Kjent 
-  och ukjent inom element\ae{}r tallteori}~\cite{Laksov2005kou} eller Kumanduri 
-och Romeros \emph{Number Theory with Computer 
-  Applications}~\cite{Kumanduri1998ntw}.
+För vidare fördjupning inom området talteori rekommenderas
+Laksovs \citetitle{Laksov2005kou}~\cite{Laksov2005kou} eller
+Shoups \citetitle{ShoupNTB}~\cite{ShoupNTB}.
